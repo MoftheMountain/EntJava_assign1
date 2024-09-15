@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>info.ejava.examples.build</groupId>
+        <artifactId>ejava-build-parent</artifactId>
+        <version>6.1.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+    <artifactId>assignment1-autorentals-maryc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>MaryC::Assignment1</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>assignment1-autorentals-beanfactory</module>
+        <!--
+        <module>assignment1-autorentals-autoconfig</module>
+        <module>assignment1-autorentals-configprops</module>
+        <module>assignment1-autorentals-logging</module>
+        <module>assignment1-autorentals-propertysource</module>
+        <module>assignment1-autorentals-testing</module>
+        -->
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>info.ejava.examples.build</groupId>
+                <artifactId>ejava-build-bom</artifactId>
+                <version>${ejava.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>ejava-nexus-snapshots</id>
+            <url>https://pika.jhuep.com/nexus/repository/ejava-snapshots</url>
+        </repository>
+    </repositories>
+</project>

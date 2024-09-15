@@ -1,0 +1,3 @@
+rentals:
+  priority:
+    source: application-dev.yml

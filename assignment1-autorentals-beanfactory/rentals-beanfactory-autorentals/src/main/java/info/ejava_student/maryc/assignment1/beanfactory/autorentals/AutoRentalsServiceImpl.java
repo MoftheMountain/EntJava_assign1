@@ -1,5 +1,10 @@
 package info.ejava_student.maryc.assignment1.beanfactory.autorentals;
 
-public class AutoRentalsServiceImpl {
+import info.ejava_student.maryc.assignment1.beanfactory.rentals.RentalsService;
+import info.ejava_student.maryc.assignment1.beanfactory.rentals.RentalDTO;
 
+public class AutoRentalsServiceImpl implements RentalsService{
+    public RentalDTO getRandomRental() {
+        return new RentalDTO("autoRental0");
+    }
 }

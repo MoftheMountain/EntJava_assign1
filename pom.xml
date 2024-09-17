@@ -14,7 +14,7 @@
     <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
     <artifactId>assignment1-autorentals-maryc</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>MaryC::Assignment1</name>
+    <name>RentalApp::Assignments::AutoRentals</name>
     <packaging>pom</packaging>
 
     <modules>

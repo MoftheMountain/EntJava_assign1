@@ -3,7 +3,6 @@ package info.ejava_student.maryc.assignment1.beanfactory.rentals;
 public class RentalDTO {
     private String name;
 
-
     public RentalDTO(String name) {
         this.name = name;
     }
@@ -15,7 +14,7 @@ public class RentalDTO {
     public void setName(String name) {
         this.name = name;
     }
-    @Override
+
     public String toString() {
         return "{" + name + "}";
     }

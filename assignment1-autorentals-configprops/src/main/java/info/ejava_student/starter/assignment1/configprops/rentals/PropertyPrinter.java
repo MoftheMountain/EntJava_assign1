@@ -4,17 +4,22 @@ import info.ejava_student.starter.assignment1.configprops.rentals.properties.Boa
 import info.ejava_student.starter.assignment1.configprops.rentals.properties.RentalProperties;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-//@Component
+@Component
 @Getter
 @RequiredArgsConstructor
 public class PropertyPrinter implements CommandLineRunner {
+    @Autowired
     private final List<RentalProperties> autos;
+    @Autowired
     private final List<RentalProperties> tools;
+    @Autowired
     private final BoatRentalProperties boat;
 
     @Override

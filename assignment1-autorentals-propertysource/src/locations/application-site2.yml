@@ -1,3 +1,6 @@
 rentals:
   priority:
     source: application-site2.yml
+  db:
+    password: site2pass
+    host: db.site2.net

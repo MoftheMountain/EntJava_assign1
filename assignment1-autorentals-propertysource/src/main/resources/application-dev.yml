@@ -1,3 +1,6 @@
 rentals:
   priority:
     source: application-dev.yml
+  db:
+    user: devUser
+    host: 127.0.0.1

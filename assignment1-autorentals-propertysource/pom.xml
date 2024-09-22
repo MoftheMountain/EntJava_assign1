@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>info.ejava-student.starter.assignments.autorentals</groupId>
-        <artifactId>autorentals-starter</artifactId>
+        <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+        <artifactId>assignment1-autorentals-maryc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>info.ejava-student.starter.assignment1.autorentals</groupId>
+    <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
     <artifactId>assignment1-autorentals-propertysource</artifactId>
-    <name>Starter::Assignment1::Config::Property Source</name>
+    <name>MaryC::Assignment1::Config::Property Source</name>
 
     <dependencies>
         <dependency>

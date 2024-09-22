@@ -25,4 +25,14 @@ public class AutoRentalDTO {
                 '}';
         return result;
     }
+    public AutoRentalDTO(string aID){
+        autoId = aID;
+        renterID = "RenterFromAutoID";
+        amount = 10000.00;
+    }
+    public AutoRentalDTO(string rID){
+        autoId = "AutoFromRenterID";
+        renterID = rID;
+        amount = 9999.99;
+    }
 }

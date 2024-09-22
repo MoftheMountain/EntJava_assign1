@@ -5,7 +5,7 @@ import info.ejava_student.starter.assignment1.beanfactory.rentals.RentalsService
 
 public class ToolRentalsServiceImpl implements RentalsService {
     @Override
-    public RentalDTO getRandomRental() {
+    public RentalDTO getRandomRental("toolRental0") {
         return null;
     }
 }

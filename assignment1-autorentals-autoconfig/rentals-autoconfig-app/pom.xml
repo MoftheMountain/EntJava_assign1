@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>info.ejava-student.starter.assignment1.autorentals</groupId>
-        <artifactId>assignment1-autorentals-autoconfig</artifactId>
+        <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+        <artifactId>assignment1-autorentals-maryc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>rentals-autoconfig-app</artifactId>
-    <name>Starter::Assignment1::Config::Auto Config::App</name>
+    <name>MaryC::Assignment1::Config::Auto Config::App</name>
 
     <dependencies>
         <dependency>
@@ -33,6 +33,18 @@
             <groupId>info.ejava.assignments.autoconfig.autorentals</groupId>
             <artifactId>autorentals-support-autoconfig</artifactId>
             <version>${ejava.version}</version>
+        </dependency>
+        <dependency> <!-- beanfactory interface for rentalDTO -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rentals-beanfactory-iface</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+            <artifactId>rentals-beanfactory-iface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

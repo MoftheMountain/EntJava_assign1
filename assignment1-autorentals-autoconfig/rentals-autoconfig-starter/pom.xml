@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>info.ejava-student.starter.assignment1.autorentals</groupId>
-        <artifactId>assignment1-autorentals-autoconfig</artifactId>
+        <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+        <artifactId>assignment1-autorentals-maryc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>rentals-autoconfig-starter</artifactId>
-    <name>Starter::Assignment1::Config::Auto Config::Starter</name>
+    <name>MaryC::Assignment1::Config::Auto Config::Starter</name>
 
     <dependencies>
         <dependency>
@@ -19,10 +19,23 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency> <!-- assumes artifact is in same groupId; correct if not -->
+        <dependency> <!-- beanfactory interface for rentalDTO -->
             <groupId>${project.groupId}</groupId>
             <artifactId>rentals-beanfactory-iface</artifactId>
             <version>${project.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency> <!-- toolrentals implementation -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rentals-autoconfig-toolrentals</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency> <!-- autorentals implementation -->
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rentals-beanfactory-autorentals</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

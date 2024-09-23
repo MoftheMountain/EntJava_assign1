@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>info.ejava-student.starter.assignments.autorentals</groupId>
-        <artifactId>autorentals-starter</artifactId>
+        <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+        <artifactId>assignment1-autorentals-maryc</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>info.ejava-student.starter.assignment1.autorentals</groupId>
     <artifactId>assignment1-autorentals-autoconfig</artifactId>
-    <name>Starter::Assignment1::Config::Auto Configuration</name>
+    <name>MaryC::Assignment1::Config::Auto Configuration</name>
     <packaging>pom</packaging>
 
     <modules>

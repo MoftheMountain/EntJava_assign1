@@ -1,15 +1,21 @@
 package info.ejava_student.assignment1.logging.autorentals.repo;
 
 import lombok.extern.slf4j.Slf4j;
-import info.ejava_student.assignment1.logging.autorentals.repo.AutoRentalRepository
+
+import java.math.BigDecimal;
 
 @Slf4j
 public class AutoRentalsRepositoryImpl implements AutoRentalsRepository{
-    public AutoRentalDTO getLeaderByAutoId(String autoId){
-        return autoRentalDTO(string autoID)
+
+    public AutoRentalDTO getLeaderByAutoId(String autoID){
+        AutoRentalDTO rental = new AutoRentalDTO(autoID, "renterId", new BigDecimal(10000));
+        log.trace("Entered getLeaderByAutoId"); //log rental
+        return rental;
     }
 
-    public AutoRentalDTO getByRenterId(String renterId){
-        return autoRentalDTO(string renterID)
+    public AutoRentalDTO getByRenterId(String renterID){
+        AutoRentalDTO rental = new AutoRentalDTO("AutoID",renterID, new BigDecimal(45000));
+        log.trace("Entered getByRenterId"); //log rental
+        return rental;
     }
 }

@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
-        <artifactId>assignment1-autorentals-maryc</artifactId>
+        <artifactId>assignment1-autorentals-autoconfig</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -18,12 +18,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency> <!-- beanfactory interface for rentalDTO -->
             <groupId>${project.groupId}</groupId>
             <artifactId>rentals-beanfactory-iface</artifactId>
             <version>${project.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency> <!-- toolrentals implementation -->
             <groupId>${project.groupId}</groupId>

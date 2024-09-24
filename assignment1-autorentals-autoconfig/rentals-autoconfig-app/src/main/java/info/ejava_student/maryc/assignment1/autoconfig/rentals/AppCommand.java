@@ -3,13 +3,18 @@ package info.ejava_student.maryc.assignment1.autoconfig.rentals;
 import info.ejava_student.maryc.assignment1.beanfactory.rentals.RentalDTO;
 import info.ejava_student.maryc.assignment1.beanfactory.rentals.RentalsService;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 
+@RequiredArgsConstructor
 public class AppCommand implements CommandLineRunner {
 
     @Getter
-    private RentalsService rentalsService;
+    private final RentalsService rentalsService;
+    @Value("${rentals.active:}")
     private String rentalsActive;
+    @Value("${rentals.preference:}")
     private String rentalsPreference;
 
     @Override

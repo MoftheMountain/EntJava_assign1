@@ -34,12 +34,6 @@
             <artifactId>autorentals-support-autoconfig</artifactId>
             <version>${ejava.version}</version>
         </dependency>
-        <dependency> <!-- beanfactory interface for rentalDTO -->
-            <groupId>${project.groupId}</groupId>
-            <artifactId>rentals-beanfactory-iface</artifactId>
-            <version>${project.version}</version>
-            <optional>true</optional>
-        </dependency>
         <dependency>
             <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
             <artifactId>rentals-beanfactory-iface</artifactId>
@@ -98,7 +92,7 @@
             <id>autos</id>
             <activation>
                 <property>
-                    <name>autos</name>
+                    <name>!autos</name>
                 </property>
             </activation>
             <dependencies>
@@ -113,7 +107,7 @@
             <id>tools</id>
             <activation>
                 <property>
-                    <name>tools</name>
+                    <name>!tools</name>
                 </property>
             </activation>
             <dependencies>

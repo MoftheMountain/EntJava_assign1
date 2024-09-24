@@ -5,16 +5,20 @@ import info.ejava_student.maryc.assignment1.autoconfig.toolrentals.ToolRentalsSe
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
-@AutoConfigureOrder(3)
-@ConditionalOnClass(RentalsService.class)
+
+@ConditionalOnClass(ToolRentalsServiceImpl.class)
+@ConditionalOnProperty(prefix ="rentals", name="active", matchIfMissing =true)
 @AutoConfiguration
+@AutoConfigureOrder(3)
 public class ToolRentalsAutoConfiguration {
     @Bean
-    @ConditionalOnProperty(prefix ="rentals", name="active", matchIfMissing =true)
-    public RentalsService rentalsService(){
+
+    @ConditionalOnMissingBean()
+    public RentalsService toolsRentalsService(){
         return new ToolRentalsServiceImpl();
     }
 }

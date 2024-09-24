@@ -8,14 +8,15 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
-@AutoConfigureOrder(1)
-@ConditionalOnClass(RentalsService.class)
-@ConditionalOnProperty(prefix="rentals", name="preference", havingValue="tools")
+@ConditionalOnClass(ToolRentalsServiceImpl.class)
+@ConditionalOnProperty(prefix ="rentals", name="active", matchIfMissing =true)
 @AutoConfiguration
+@AutoConfigureOrder(1)
+
 public class ToolRentalsAutoConfigurationRequested {
     @Bean
-    @ConditionalOnProperty(prefix ="rentals", name="active", matchIfMissing =true)
-    public RentalsService rentalsService(){
+    @ConditionalOnProperty(prefix="rentals", name="preference", havingValue="tools")
+    public RentalsService toolsRentalsRequested(){
         return new ToolRentalsServiceImpl();
     }
 }

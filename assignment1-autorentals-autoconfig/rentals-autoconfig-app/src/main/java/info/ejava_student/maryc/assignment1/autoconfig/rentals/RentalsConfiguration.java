@@ -10,6 +10,6 @@ public class RentalsConfiguration {
 
     @Bean
     public AppCommand appCommand(@Autowired(required = false) RentalsService rentalsService) {
-        return new AppCommand();
+        return new AppCommand(rentalsService);
     }
 }

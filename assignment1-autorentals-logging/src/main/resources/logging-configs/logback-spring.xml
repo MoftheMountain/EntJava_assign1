@@ -1,0 +1,25 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n</pattern>
+        </encoder>
+    </appender>
+	<property name="LOG_FILE" value="./target/logs/appenders.log"/>
+	<include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+
+	<root level="trace">
+		<appender-ref ref="CONSOLE"/>
+	</root>
+	<logger name="X.Y" level="trace">
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="FILE"/>
+	</logger>
+	<logger name="info.ejava_student.maryc.assignment1.logging.autorentals.svc" level="trace">
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="FILE"/>
+	</logger>
+	<logger name="info.ejava_student.maryc.assignment1.logging.autorentals.repo" level="trace">
+		<appender-ref ref="FILE"/>
+	</logger>
+
+</configuration>

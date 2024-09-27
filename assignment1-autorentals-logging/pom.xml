@@ -32,6 +32,7 @@
             <groupId>info.ejava.assignments.logging.autorentals</groupId>
             <artifactId>autorentals-support-logging</artifactId>
             <version>${ejava.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

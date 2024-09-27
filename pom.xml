@@ -25,8 +25,8 @@
         <module>assignment1-autorentals-logging</module>
         <module>assignment1-autorentals-configprops</module>
  <!--
-        <module>assignment1-autorentals-testing</module>
 
+<module>assignment1-autorentals-testing</module>
 
         -->
     </modules>

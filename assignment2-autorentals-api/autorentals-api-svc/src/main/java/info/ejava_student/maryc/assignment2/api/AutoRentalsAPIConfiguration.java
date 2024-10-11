@@ -1,8 +1,8 @@
-package info.ejava_student.maryc.assignment2.api.api;
+package info.ejava_student.maryc.assignment2.api;
 
 import info.ejava.assignments.api.autorenters.svc.autos.AutosService;
 import info.ejava.assignments.api.autorenters.svc.renters.RentersService;
-import info.ejava_student.maryc.assignment2.api.api.autorentals.*;
+import info.ejava_student.maryc.assignment2.api.autorentals.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

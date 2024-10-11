@@ -1,4 +1,4 @@
-package info.ejava_student.maryc.assignment2.api.autorentals.client.client;
+package info.ejava_student.maryc.assignment2.api.autorentals.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import info.ejava.assignments.api.autorenters.dto.StreetAddressDTO;
@@ -25,9 +25,9 @@ public class AutoRentalDTO implements RentalDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private BigDecimal amount;
-    String makeModel;
-    String renterName;
-    Integer renterAge;
+    String makeModel;//make and model separated by space
+    String renterName;//First and Last separated by space
+    Integer renterAge; //in Days
     StreetAddressDTO streetAddress;
     @JsonIgnore
     String username;

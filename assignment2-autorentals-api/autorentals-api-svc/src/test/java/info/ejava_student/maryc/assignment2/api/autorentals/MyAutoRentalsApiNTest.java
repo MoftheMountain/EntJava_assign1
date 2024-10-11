@@ -1,10 +1,9 @@
-package info.ejava_student.maryc.assignment2.api.api.autorentals;
+package info.ejava_student.maryc.assignment2.api.autorentals;
 
 import info.ejava.assignments.api.autorenters.svc.ProvidedApiAutoRenterTestConfiguration;
 import info.ejava.assignments.api.autorenters.svc.rentals.AutoRentalsApiNTest;
-import info.ejava_student.maryc.assignment2.api.api.AutoRentalsApiApp;
-import info.ejava_student.maryc.assignment2.api.api.autorentals.impl.ApiImplNTestConfiguration;
-import org.junit.jupiter.api.Disabled;
+import info.ejava_student.maryc.assignment2.api.AutoRentalsApiApp;
+import info.ejava_student.maryc.assignment2.api.autorentals.impl.ApiImplNTestConfiguration;
 import org.junit.jupiter.api.Nested;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -26,7 +25,7 @@ public class MyAutoRentalsApiNTest extends AutoRentalsApiNTest {
         //@Nested public class new_rental {}
 
         //remove this class declaration to enable get/modification tests
-        @Nested public class existing_rental {}
+        //@Nested public class existing_rental {}
 
         //remove this class declaration to enable query tests
         @Nested public class can_query_to { }

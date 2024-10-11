@@ -1,4 +1,4 @@
-package info.ejava_student.maryc.assignment2.api.api.autorentals;
+package info.ejava_student.maryc.assignment2.api.autorentals;
 
 import info.ejava.assignments.api.autorenters.client.autos.AutosAPI;
 import info.ejava.assignments.api.autorenters.client.renters.RentersAPI;
@@ -9,8 +9,8 @@ import info.ejava.assignments.api.autorenters.dto.rentals.TimePeriod;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTOFactory;
 import info.ejava.assignments.api.autorenters.svc.ProvidedApiAutoRenterTestConfiguration;
-import info.ejava_student.maryc.assignment2.api.api.AutoRentalsApiApp;
-import info.ejava_student.maryc.assignment2.api.api.autorentals.impl.ApiImplNTestConfiguration;
+import info.ejava_student.maryc.assignment2.api.AutoRentalsApiApp;
+import info.ejava_student.maryc.assignment2.api.autorentals.impl.ApiImplNTestConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.BeforeEach;

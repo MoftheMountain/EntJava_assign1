@@ -1,25 +1,20 @@
-package info.ejava_student.maryc.assignment2.api.api.autorentals.impl;
+package info.ejava_student.maryc.assignment2.api.autorentals.impl;
 
-import info.ejava.assignments.api.autorenters.client.autos.AutosAPI;
 import info.ejava.assignments.api.autorenters.dto.StreetAddressDTO;
 import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
 import info.ejava.assignments.api.autorenters.dto.rentals.SearchParams;
 import info.ejava.assignments.api.autorenters.dto.rentals.TimePeriod;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
-import info.ejava.assignments.api.autorenters.svc.autos.AutosService;
-import info.ejava.assignments.api.autorenters.svc.autos.AutosServiceDTORepoImpl;
 import info.ejava.assignments.api.autorenters.svc.rentals.ApiTestHelper;
-import info.ejava_student.maryc.assignment2.api.api.autorentals.AutoRentalsService;
-import info.ejava_student.maryc.assignment2.api.api.autorentals.AutoRentalsServiceImpl;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.client.AutoRentalDTO;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.client.AutoRentalsAPI;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.client.AutoRentalsAPIClient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import info.ejava.examples.common.web.ServerConfig;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPIClient;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -34,13 +29,22 @@ import java.util.List;
  * "finder(s)" simply return the List of DTOs
  */
 public class ApiTestHelperImpl implements ApiTestHelper<AutoRentalDTO> {
-/*    @Autowired
-    private AutoRentalsAPI autoRentalsAPIClient;*/
+private URI baseUrl;
+private RestTemplate restTemplate;
+private MediaType mediaType;
+private AutoRentalsAPIClient autoRentalsAPIClient;
+    public ApiTestHelperImpl(RestTemplate restTemplate, ServerConfig serverConfig){
+        this.baseUrl = serverConfig.getBaseUrl();
+        this.restTemplate = restTemplate;
+        this.mediaType = MediaType.APPLICATION_JSON;
+        this.autoRentalsAPIClient = new AutoRentalsAPIClient(restTemplate, new ServerConfig().withBaseUrl(baseUrl).build(),mediaType);
+    }
     //you may need a reusable mechanism to construct DTO instances
 
     @Override
     public ApiTestHelper<AutoRentalDTO> withRestTemplate(RestTemplate restTemplate) {
-        return null; //new instance of this helper, with clients using provided restTemplate
+        ServerConfig serverConfig = new ServerConfig().withBaseUrl(baseUrl).build();
+        return new ApiTestHelperImpl(restTemplate, serverConfig); //new instance of this helper, with clients using provided restTemplate
     }
 
     @Override
@@ -151,8 +155,8 @@ public class ApiTestHelperImpl implements ApiTestHelper<AutoRentalDTO> {
 
     @Override
     public ResponseEntity<AutoRentalDTO> createContract(AutoRentalDTO proposedRental) {
-/*        ResponseEntity<AutoRentalDTO> savedRental = autoRentalsAPIClient.createAutoRental(proposedRental);
-        return savedRental;*/ return null;
+        ResponseEntity<AutoRentalDTO> savedRental = autoRentalsAPIClient.createAutoRental(proposedRental);
+        return savedRental;
     }
 
     @Override
@@ -162,12 +166,16 @@ public class ApiTestHelperImpl implements ApiTestHelper<AutoRentalDTO> {
 
     @Override
     public ResponseEntity<AutoRentalDTO> getRental(AutoRentalDTO rentalContract) {
-        return null;
+        ResponseEntity<AutoRentalDTO>foundRental = autoRentalsAPIClient.getAutoRental(rentalContract.getId());
+        return foundRental;
+
     }
 
     @Override
     public ResponseEntity<AutoRentalDTO> getRentalById(String rentalId) {
-        return null;
+        ResponseEntity<AutoRentalDTO>foundRental = autoRentalsAPIClient.getAutoRental(rentalId);
+        return foundRental;
+
     }
 
     @Override
@@ -177,11 +185,13 @@ public class ApiTestHelperImpl implements ApiTestHelper<AutoRentalDTO> {
 
     @Override
     public ResponseEntity<Void> removeRental(String rentalId) {
-        return null;
+        ResponseEntity<Void> response = autoRentalsAPIClient.removeAutoRental(rentalId);
+        return response;
     }
 
     @Override
     public ResponseEntity<Void> removeAllRentals() {
-        return null;
+        ResponseEntity<Void> response =  autoRentalsAPIClient.removeAllAutoRentals();
+        return response;
     }
 }

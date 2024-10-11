@@ -1,6 +1,6 @@
-package info.ejava_student.maryc.assignment2.api.api.autorentals;
+package info.ejava_student.maryc.assignment2.api.autorentals;
 
-import info.ejava_student.maryc.assignment2.api.autorentals.client.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
 
 import java.security.SecureRandom;
 import java.util.Map;
@@ -30,6 +30,20 @@ public class AutoRentalsDTORepositoryImpl implements AutoRentalsDTORepository{
         return autoRental!=null ? Optional.of(autoRental) : Optional.empty();
     }
 
+    public boolean hasById(String id){
+        return id!=null ? autoRentals.containsKey(id) : false ;
+    }
+    @Override
+    public void deleteById(String id) {
+        if (id!=null) {
+            autoRentals.remove(id);
+        }
+    }
+
+    @Override
+    public void deleteAll() {
+        autoRentals.clear();
+    }
 /*
     @Override
     public Page<AutoRentalDTO> findByAutoId(String autoId) {
@@ -61,13 +75,5 @@ public class AutoRentalsDTORepositoryImpl implements AutoRentalsDTORepository{
         return 0;
     }
 
-    @Override
-    public void deleteById(String rentalId) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }*/
+ */
 }

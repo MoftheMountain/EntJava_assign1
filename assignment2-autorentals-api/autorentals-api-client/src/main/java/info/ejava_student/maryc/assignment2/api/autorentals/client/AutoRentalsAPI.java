@@ -1,4 +1,4 @@
-package info.ejava_student.maryc.assignment2.api.autorentals.client.client;
+package info.ejava_student.maryc.assignment2.api.autorentals.client;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -12,14 +12,16 @@ public interface AutoRentalsAPI {
 
     ResponseEntity<AutoRentalDTO> createAutoRental(AutoRentalDTO autoRental);
     ResponseEntity<AutoRentalDTO>  getAutoRental(String id);
+    ResponseEntity<Void> hasAutoRental(String id);
+    ResponseEntity<Void> removeAutoRental(String id);
+    ResponseEntity<Void> removeAllAutoRentals();
 
-/*    ResponseEntity<AutoRentalListDTO> queryAutoRentals(AutoRentalDTO probe, Integer pageNumber, Integer pageSize);
+    /*    ResponseEntity<AutoRentalListDTO> queryAutoRentals(AutoRentalDTO probe, Integer pageNumber, Integer pageSize);
     ResponseEntity<AutoRentalListDTO> searchAutoRentals(AutoSearchParams searchParams);
 
     ResponseEntity<AutoRentalDTO>  getAutoRentalByAutoID(String id);
     ResponseEntity<AutoRentalDTO>  getAutoRentalByRenterID(String id);
-    ResponseEntity<Void> existsAutoRental(String id);
+
     ResponseEntity<AutoRentalDTO>  updateAutoRental(String id, AutoDTO auto);
-    ResponseEntity<Void> removeAutoRental(String id);
-    ResponseEntity<Void> removeAllAutoRentals();*/
+*/
 }

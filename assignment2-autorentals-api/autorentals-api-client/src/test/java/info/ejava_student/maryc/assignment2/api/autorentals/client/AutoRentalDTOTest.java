@@ -1,12 +1,10 @@
-package info.ejava_student.maryc.assignment2.api.autorentals.client.client;
+package info.ejava_student.maryc.assignment2.api.autorentals.client;
 
 import info.ejava.assignments.api.autorenters.dto.autos.AutoDTOFactory;
 import info.ejava.assignments.api.autorenters.dto.rentals.TimePeriod;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTOFactory;
 import info.ejava.examples.common.dto.DtoUtil;
 import info.ejava.examples.common.dto.JsonUtil;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.client.AutoRentalDTO;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.client.AutoRentalListDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;

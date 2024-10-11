@@ -1,4 +1,4 @@
-package info.ejava_student.maryc.assignment2.api.api;
+package info.ejava_student.maryc.assignment2.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

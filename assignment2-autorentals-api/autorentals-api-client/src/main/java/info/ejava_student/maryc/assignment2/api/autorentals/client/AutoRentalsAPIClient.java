@@ -1,15 +1,13 @@
-package info.ejava_student.maryc.assignment2.api.autorentals.client.client;
+package info.ejava_student.maryc.assignment2.api.autorentals.client;
 
-import info.ejava.assignments.api.autorenters.client.autos.AutosAPIClient;
-import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
-import info.ejava.assignments.api.autorenters.dto.autos.AutoSearchParams;
+import info.ejava.examples.common.exceptions.ClientErrorException;
 import info.ejava.examples.common.web.ServerConfig;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -36,7 +34,7 @@ public class AutoRentalsAPIClient implements AutoRentalsAPI {
 
     @Override
     public ResponseEntity<AutoRentalDTO> createAutoRental(AutoRentalDTO autoRental) {
-        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTALS_PATH).build().toUri();
+        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTALS_PATH).build(autoRental.getId());//.toUri();
 
         RequestEntity<AutoRentalDTO> request = RequestEntity.post(url)
                 .accept(mediaType)
@@ -48,9 +46,42 @@ public class AutoRentalsAPIClient implements AutoRentalsAPI {
 
     @Override
     public ResponseEntity<AutoRentalDTO> getAutoRental(String id) {
-        return null;
+        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTAL_PATH).build(id);
+
+        RequestEntity<Void> request = RequestEntity.get(url)
+                .accept(mediaType)
+                .build();
+        ResponseEntity<AutoRentalDTO> response = restTemplate.exchange(request, AutoRentalDTO.class);
+        return response;
     }
-/*
+
+    @Override
+    public ResponseEntity<Void> hasAutoRental(String id) {
+        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTALS_PATH).build(id);
+
+        RequestEntity<Void> request = RequestEntity.head(url).build();
+        ResponseEntity<Void> response = restTemplate.exchange(request, Void.class);
+        return response;
+    }
+
+    @Override
+    public ResponseEntity<Void> removeAutoRental(String id) {
+        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTAL_PATH).build(id);
+
+        RequestEntity<Void> request = RequestEntity.delete(url).build();
+        ResponseEntity<Void> response = restTemplate.exchange(request, Void.class);
+        return response;
+    }
+
+    @Override
+    public ResponseEntity<Void> removeAllAutoRentals() {
+        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTALS_PATH).build().toUri();
+
+        RequestEntity<Void> request = RequestEntity.delete(url).build();
+        ResponseEntity<Void> response = restTemplate.exchange(request, Void.class);
+        return response;
+    }
+    /*
     @Override
     public ResponseEntity<AutoRentalListDTO> queryAutoRentals(AutoRentalDTO probe, Integer pageNumber, Integer pageSize) {
         return null;
@@ -73,23 +104,12 @@ public class AutoRentalsAPIClient implements AutoRentalsAPI {
         return null;
     }
 
-    @Override
-    public ResponseEntity<Void> existsAutoRental(String id) {
-        return null;
-    }
+
 
     @Override
     public ResponseEntity<AutoRentalDTO> updateAutoRental(String id, AutoDTO auto) {
         return null;
     }
 
-    @Override
-    public ResponseEntity<Void> removeAutoRental(String id) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<Void> removeAllAutoRentals() {
-        return null;
-    }*/
+  */
 }

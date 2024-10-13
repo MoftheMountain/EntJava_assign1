@@ -1,5 +1,9 @@
 package info.ejava_student.maryc.assignment2.api.autorentals.client;
 
+import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
+import info.ejava.assignments.api.autorenters.dto.autos.AutoListDTO;
+import info.ejava.assignments.api.autorenters.dto.autos.AutoSearchParams;
+import info.ejava.assignments.api.autorenters.dto.rentals.SearchParams;
 import info.ejava.examples.common.exceptions.ClientErrorException;
 import info.ejava.examples.common.web.ServerConfig;
 import lombok.Getter;
@@ -81,35 +85,61 @@ public class AutoRentalsAPIClient implements AutoRentalsAPI {
         ResponseEntity<Void> response = restTemplate.exchange(request, Void.class);
         return response;
     }
-    /*
+
+    @Override
+    public ResponseEntity<AutoRentalDTO> updateAutoRental(String id, AutoRentalDTO autoRental) {
+        URI url = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTAL_PATH).build(id);
+
+        RequestEntity<AutoRentalDTO> request = RequestEntity.put(url)
+                .accept(mediaType)
+                .contentType(mediaType)
+                .body(autoRental);
+        ResponseEntity<AutoRentalDTO> response = restTemplate.exchange(request, AutoRentalDTO.class);
+        return response;
+    }
+
     @Override
     public ResponseEntity<AutoRentalListDTO> queryAutoRentals(AutoRentalDTO probe, Integer pageNumber, Integer pageSize) {
-        return null;
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTAL_QUERY_PATH);
+        if (null!=pageNumber && null!=pageSize) {
+            uriBuilder = uriBuilder.queryParam("pageNumber", pageNumber);
+            uriBuilder = uriBuilder.queryParam("pageSize", pageSize);
+        }
+        URI url = uriBuilder.build().toUri();
+
+        RequestEntity<AutoRentalDTO> request = RequestEntity.post(url)
+                .accept(mediaType)
+                .body(probe);
+        ResponseEntity<AutoRentalListDTO> response = restTemplate.exchange(request, AutoRentalListDTO.class);
+        return response;
     }
 
     @Override
-    public ResponseEntity<AutoRentalListDTO> searchAutoRentals(AutoSearchParams searchParams) {
-        return null;
+    public ResponseEntity<AutoRentalListDTO> searchAutoRentals(SearchParams searchParams) {
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTALS_PATH);
+        if (searchParams.getAutoId()!=null) {
+            uriBuilder = uriBuilder.queryParam("autoId", searchParams.getAutoId());
+        }
+        if (searchParams.getRenterId()!=null) {
+            uriBuilder = uriBuilder.queryParam("renterId", searchParams.getRenterId());
+        }
+        if (searchParams.getEndDate()!=null) {
+            uriBuilder = uriBuilder.queryParam("endDate", searchParams.getTimePeriod());
+        }
+        if (searchParams.getStartDate()!=null) {
+            uriBuilder = uriBuilder.queryParam("startDate", searchParams.getStartDate());
+        }
+        if (null!=searchParams.getPageNumber() && null!=searchParams.getPageSize()) {
+            uriBuilder = uriBuilder.queryParam("pageNumber", searchParams.getPageNumber());
+            uriBuilder = uriBuilder.queryParam("pageSize", searchParams.getPageSize());
+        }
+        URI url = uriBuilder.build().toUri();
+
+        RequestEntity<Void> request = RequestEntity.get(url)
+                .accept(mediaType)
+                .build();
+        ResponseEntity<AutoRentalListDTO> response = restTemplate.exchange(request, AutoRentalListDTO.class);
+        return response;
     }
 
-
-
-    @Override
-    public ResponseEntity<AutoRentalDTO> getAutoRentalByAutoID(String id) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<AutoRentalDTO> getAutoRentalByRenterID(String id) {
-        return null;
-    }
-
-
-
-    @Override
-    public ResponseEntity<AutoRentalDTO> updateAutoRental(String id, AutoDTO auto) {
-        return null;
-    }
-
-  */
 }

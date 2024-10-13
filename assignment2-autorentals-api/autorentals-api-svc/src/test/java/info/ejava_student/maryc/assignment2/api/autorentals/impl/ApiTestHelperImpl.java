@@ -8,6 +8,8 @@ import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
 import info.ejava.assignments.api.autorenters.svc.rentals.ApiTestHelper;
 import info.ejava.examples.common.web.ServerConfig;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalListDTO;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPI;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPIClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -161,7 +163,8 @@ private AutoRentalsAPIClient autoRentalsAPIClient;
 
     @Override
     public ResponseEntity<AutoRentalDTO> modifyContract(AutoRentalDTO proposedRental) {
-        return null;
+        ResponseEntity<AutoRentalDTO> updatedRental = autoRentalsAPIClient.updateAutoRental(proposedRental.getId(),proposedRental);
+        return updatedRental;
     }
 
     @Override
@@ -180,7 +183,14 @@ private AutoRentalsAPIClient autoRentalsAPIClient;
 
     @Override
     public List<AutoRentalDTO> findRentalsBy(SearchParams searchParams) {
-        return null;
+        AutoRentalDTO probe = AutoRentalDTO.builder()
+                .autoID(searchParams.getAutoId())
+                .renterID(searchParams.getRenterId())
+                .startDate(searchParams.getStartDate())
+                .endDate(searchParams.getEndDate())
+                .build();
+        ResponseEntity<AutoRentalListDTO> response = autoRentalsAPIClient.queryAutoRentals(probe, searchParams.getPageNumber(), searchParams.getPageSize());
+        return response.getBody().getContents();
     }
 
     @Override

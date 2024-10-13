@@ -28,7 +28,7 @@ public class MyAutoRentalsApiNTest extends AutoRentalsApiNTest {
         //@Nested public class existing_rental {}
 
         //remove this class declaration to enable query tests
-        @Nested public class can_query_to { }
+        //@Nested public class can_query_to { }
 
         //remove this class declaration to enable query tests
         @Nested public class date_query { }

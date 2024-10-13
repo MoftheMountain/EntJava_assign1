@@ -55,4 +55,8 @@ public class AutoRentalDTO implements RentalDTO {
         this.startDate = timePeriod.getStartDate();
         this.endDate = timePeriod.getEndDate();
     }
+    public TimePeriod makeTimePeriod(){
+        return new TimePeriod(this.startDate,this.endDate);
+    }
+
 }

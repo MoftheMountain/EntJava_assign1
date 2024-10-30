@@ -27,11 +27,8 @@
         <module>assignment1-autorentals-testing</module>
 		-->
 		<module>assignment2-autorentals-api</module>
- <!--
+		<module>assignment3-autorentals-security</module>
 
-<module>assignment1-autorentals-testing</module>
-
-        -->
     </modules>
 
     <dependencyManagement>

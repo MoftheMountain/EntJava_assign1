@@ -1,4 +1,4 @@
-package info.ejava_student.maryc.assignment2.api;
+package info.ejava_student.maryc.assignment2.api.autorentals;
 
 import info.ejava.assignments.api.autorenters.svc.autos.AutosService;
 import info.ejava.assignments.api.autorenters.svc.renters.RentersService;
@@ -16,7 +16,8 @@ public class AutoRentalsAPIConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public AutoRentalsDTORepository repo() {return new AutoRentalsDTORepositoryImpl();}
+    public AutoRentalsDTORepository repo() {
+        return new AutoRentalsDTORepositoryImpl();}
 
     @Bean
     @ConditionalOnMissingBean

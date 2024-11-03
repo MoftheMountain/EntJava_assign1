@@ -12,6 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.Period;
 
@@ -174,12 +177,12 @@ public class AutoRentalsServiceImpl implements AutoRentalsService{
     }
 
     @Override
-    public void removeAllAutoRentals() {
+    public void deleteAllAutoRentals() {
         repo.deleteAll();
     }
 
     @Override
-    public void removeAutoRental(String id) {
+    public void deleteAutoRentalDTO(String id) {
         repo.deleteById(id);
     }
 
@@ -187,7 +190,15 @@ public class AutoRentalsServiceImpl implements AutoRentalsService{
 
     @Override
     public Page<AutoRentalDTO> queryAutoRentals(AutoRentalDTO probe, Pageable pageable) {
-        Page<AutoRentalDTO> rentals = repo.findAll(Example.of(probe), pageable);
+
+        Page<AutoRentalDTO> rentals = null;
+        if((probe.getAutoID()==null &&
+                probe.getRenterID()==null) &&
+                probe.makeTimePeriod()==null){
+            rentals = repo.findAll(pageable);
+        } else {
+            rentals = repo.findAll(Example.of(probe), pageable);
+        }
         if (pageable.isPaged()) {
             log.debug("pageSize {}/pageNumber {}, returns {}", pageable.getPageSize(), pageable.getPageNumber(), rentals.getNumberOfElements());
         } else {

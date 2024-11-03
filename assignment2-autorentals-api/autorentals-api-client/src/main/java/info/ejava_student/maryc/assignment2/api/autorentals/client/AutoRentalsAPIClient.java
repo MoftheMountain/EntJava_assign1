@@ -1,17 +1,12 @@
 package info.ejava_student.maryc.assignment2.api.autorentals.client;
 
-import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
-import info.ejava.assignments.api.autorenters.dto.autos.AutoListDTO;
-import info.ejava.assignments.api.autorenters.dto.autos.AutoSearchParams;
 import info.ejava.assignments.api.autorenters.dto.rentals.SearchParams;
-import info.ejava.examples.common.exceptions.ClientErrorException;
 import info.ejava.examples.common.web.ServerConfig;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -101,14 +96,28 @@ public class AutoRentalsAPIClient implements AutoRentalsAPI {
     @Override
     public ResponseEntity<AutoRentalListDTO> queryAutoRentals(AutoRentalDTO probe, Integer pageNumber, Integer pageSize) {
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUri(baseUrl).path(AUTORENTAL_QUERY_PATH);
+        if (probe.getAutoID()!=null) {
+            uriBuilder = uriBuilder.queryParam("autoId", probe.getAutoID());
+        }
+        if (probe.getRenterID()!=null) {
+            uriBuilder = uriBuilder.queryParam("renterId", probe.getRenterID());
+        }
+        if (probe.getEndDate()!=null) {
+            uriBuilder = uriBuilder.queryParam("endDate", probe.getEndDate());
+        }
+        if (probe.getStartDate()!=null) {
+            uriBuilder = uriBuilder.queryParam("startDate", probe.getStartDate());
+        }
         if (null!=pageNumber && null!=pageSize) {
             uriBuilder = uriBuilder.queryParam("pageNumber", pageNumber);
             uriBuilder = uriBuilder.queryParam("pageSize", pageSize);
         }
+
         URI url = uriBuilder.build().toUri();
 
         RequestEntity<AutoRentalDTO> request = RequestEntity.post(url)
                 .accept(mediaType)
+                //.build();
                 .body(probe);
         ResponseEntity<AutoRentalListDTO> response = restTemplate.exchange(request, AutoRentalListDTO.class);
         return response;
@@ -137,6 +146,7 @@ public class AutoRentalsAPIClient implements AutoRentalsAPI {
 
         RequestEntity<Void> request = RequestEntity.get(url)
                 .accept(mediaType)
+                //.body(searchParams);
                 .build();
         ResponseEntity<AutoRentalListDTO> response = restTemplate.exchange(request, AutoRentalListDTO.class);
         return response;

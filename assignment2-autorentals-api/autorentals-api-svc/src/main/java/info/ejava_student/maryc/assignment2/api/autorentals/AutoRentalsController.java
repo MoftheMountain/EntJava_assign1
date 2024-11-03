@@ -18,6 +18,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -40,7 +43,10 @@ public class AutoRentalsController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<AutoRentalDTO> createAutoRental(
-            @RequestBody AutoRentalDTO autoRental) {
+            @RequestBody AutoRentalDTO autoRental,
+            @AuthenticationPrincipal UserDetails user) {
+        autoRental.setUsername(user.getUsername());
+
         AutoRentalDTO addedAutoRental = autoRentalsService.createAutoRental(autoRental);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
@@ -58,6 +64,7 @@ public class AutoRentalsController {
         Optional<AutoRentalDTO> autoRental = autoRentalsService.getAutoRental(id);
 
         ResponseEntity<Optional<AutoRentalDTO>> response = ResponseEntity.ok(autoRental);
+
         return response;
     }
 
@@ -88,15 +95,17 @@ public class AutoRentalsController {
         return response;
     }
 
+    @PreAuthorize("hasRole=('ADMIN')")
     @DeleteMapping(path= AutoRentalsAPI.AUTORENTALS_PATH)
-    public ResponseEntity<Void> removeAllAutoRentals() {
-        autoRentalsService.removeAllAutoRentals();
+    public ResponseEntity<Void> deleteAllAutoRentals() {
+        autoRentalsService.deleteAllAutoRentals();
         return ResponseEntity.noContent().build();
     }
 
+    @PreAuthorize("hasRole=('MGR')")
     @DeleteMapping(path= AutoRentalsAPI.AUTORENTAL_PATH)
-    public ResponseEntity<Void> removeAutoRental(@PathVariable("id") String id) {
-        autoRentalsService.removeAutoRental(id);
+    public ResponseEntity<Void> deleteAutoRentalDTO(@PathVariable("id") String id) {
+        autoRentalsService.deleteAutoRentalDTO(id);
         return ResponseEntity.noContent().build();
     }
 

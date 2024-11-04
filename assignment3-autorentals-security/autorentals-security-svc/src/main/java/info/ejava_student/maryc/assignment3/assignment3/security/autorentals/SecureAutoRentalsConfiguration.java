@@ -35,6 +35,6 @@ public class SecureAutoRentalsConfiguration {
                                                    RentersService rentersService,
                                                    AuthorizationHelper authzHelper) {
         Assert.notEmpty(serviceImpls,"no RenterService impls found to secure");
-        return new SecureAutoRentalsServiceWrapper(serviceImpls.get(0) /* ... */);
+        return new SecureAutoRentalsServiceWrapper(serviceImpls.get(0),rentersService,authzHelper);
     }
 }

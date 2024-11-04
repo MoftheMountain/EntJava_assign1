@@ -45,7 +45,7 @@ public class AutoRentalsController {
     public ResponseEntity<AutoRentalDTO> createAutoRental(
             @RequestBody AutoRentalDTO autoRental,
             @AuthenticationPrincipal UserDetails user) {
-        autoRental.setUsername(user.getUsername());
+
 
         AutoRentalDTO addedAutoRental = autoRentalsService.createAutoRental(autoRental);
 
@@ -67,7 +67,6 @@ public class AutoRentalsController {
 
         return response;
     }
-
 
     @RequestMapping(path= AutoRentalsAPI.AUTORENTAL_PATH,
             method= RequestMethod.PUT,
@@ -95,14 +94,13 @@ public class AutoRentalsController {
         return response;
     }
 
-    @PreAuthorize("hasRole=('ADMIN')")
     @DeleteMapping(path= AutoRentalsAPI.AUTORENTALS_PATH)
     public ResponseEntity<Void> deleteAllAutoRentals() {
         autoRentalsService.deleteAllAutoRentals();
         return ResponseEntity.noContent().build();
     }
 
-    @PreAuthorize("hasRole=('MGR')")
+
     @DeleteMapping(path= AutoRentalsAPI.AUTORENTAL_PATH)
     public ResponseEntity<Void> deleteAutoRentalDTO(@PathVariable("id") String id) {
         autoRentalsService.deleteAutoRentalDTO(id);

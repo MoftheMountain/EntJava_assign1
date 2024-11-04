@@ -43,7 +43,7 @@ public class IdentityController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = Optional.ofNullable(authentication)
 
-                .map(authn -> authn.getPrincipal() /* (String) null)*/) //fix me
+                .map(authn -> authn.getPrincipal()) //fix me
 
                 .orElse(null);
         String user = principal instanceof UserDetails ?

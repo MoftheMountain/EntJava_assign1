@@ -145,12 +145,11 @@ public class SecurityConfiguration {
             http.csrf(AbstractHttpConfigurer::disable);
             http.authorizeHttpRequests(cfg->cfg.requestMatchers("/api/whoAmI/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/renters/**").authenticated());
-            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/autos/**","/api/autorentals/**").permitAll());
+            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/autos/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.POST,"/api/autos/query/**","/api/autorentals/query/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.HEAD).permitAll());
-            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.POST).authenticated());
-            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.PUT).authenticated());
-            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.DELETE).authenticated());
+            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.DELETE,"/api/autos","/api/renters").hasAnyAuthority("ROLE_ADMIN"));
+            http.authorizeHttpRequests(cfg->cfg.anyRequest().authenticated());
             return http.build();
         }
 

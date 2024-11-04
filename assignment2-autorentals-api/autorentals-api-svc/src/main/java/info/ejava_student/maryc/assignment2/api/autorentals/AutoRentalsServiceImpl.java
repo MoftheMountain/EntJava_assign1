@@ -94,6 +94,7 @@ public class AutoRentalsServiceImpl implements AutoRentalsService{
         }
 
         newAutoRental.setRenterName(renter.getFirstName() + " " + renter.getLastName());
+        newAutoRental.setUsername(renter.getUsername());
 
         //get auto parameters
         newAutoRental.setMakeModel(auto.getMake() + " " + auto.getModel());

@@ -1,5 +1,6 @@
 package info.ejava_student.starter.assignment3.security.autorentals.impl;
 
+import info.ejava.assignments.security.autorenters.svc.AccountProperties;
 import info.ejava.assignments.security.autorenters.svc.ProvidedAuthorizationTestHelperConfiguration;
 import info.ejava.examples.common.web.RestTemplateConfig;
 import info.ejava.examples.common.web.ServerConfig;
@@ -12,14 +13,19 @@ import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -31,6 +37,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.Map;
 import java.util.Optional;
 
 @TestConfiguration(proxyBeanMethods = false)
@@ -93,6 +100,12 @@ public class SecurityTestConfiguration {
         return new RestTemplateConfig().restTemplateDebug(builder, authn);
     }
 
+    @Bean @Lazy
+    @ConfigurationProperties("it.server")
+    public ServerConfig itServerConfig(@LocalServerPort int port) {
+        return new ServerConfig().withPort(port);
+    }
+
     /**
      * Creates a ClientHttpRequestFactory that optionally uses TLS based on the presence of
      * an SSLFactory.
@@ -100,6 +113,7 @@ public class SecurityTestConfiguration {
      * @return ClientHttpRequestFactory
      */
     @Bean
+    @Lazy
     public ClientHttpRequestFactory httpsRequestFactory(@Autowired(required = false) SSLFactory sslFactory) {
         PoolingHttpClientConnectionManagerBuilder builder = PoolingHttpClientConnectionManagerBuilder.create();
         PoolingHttpClientConnectionManager connectionManager = Optional.ofNullable(sslFactory)
@@ -122,6 +136,7 @@ public class SecurityTestConfiguration {
      * @throws IOException if error reading keystore
      */
     @Bean
+    @Lazy
     @ConditionalOnExpression("!T(org.springframework.util.StringUtils).isEmpty('${it.server.trust-store:}')")
     public SSLFactory sslFactory(ResourceLoader resourceLoader, ServerConfig baseServerConfig) throws IOException {
         try (InputStream trustStoreStream = resourceLoader.getResource(baseServerConfig.getTrustStore()).getInputStream()) {

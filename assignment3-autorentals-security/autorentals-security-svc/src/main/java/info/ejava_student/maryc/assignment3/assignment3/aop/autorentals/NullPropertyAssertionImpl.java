@@ -2,6 +2,7 @@ package info.ejava_student.maryc.assignment3.assignment3.aop.autorentals;
 
 import info.ejava.assignments.aop.autorenters.util.NullPropertyAssertion;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Optional;
 
@@ -12,7 +13,15 @@ public class NullPropertyAssertionImpl extends NullPropertyAssertion {
      */
     @Override
     protected Optional<Method> getGetterMethod(Object object, String getterName) {
-        return null; //TODO
+
+        Optional<Method> method = Optional.empty();
+        try {
+            return method = Optional.ofNullable(object.getClass().getMethod(getterName));
+        } catch (NoSuchMethodException e) {
+            return method;
+        }
+        //return method;
+
     }
 
     /**
@@ -21,6 +30,11 @@ public class NullPropertyAssertionImpl extends NullPropertyAssertion {
      */
     @Override
     protected Object getValue(Object object, Method getterMethod) {
-        return null; //TODO
+        Object valueObj = null;
+        try {
+            return valueObj = getterMethod.invoke(object);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

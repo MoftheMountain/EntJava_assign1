@@ -38,7 +38,7 @@ public class SecurityConfiguration {
         public SecurityFilterChain configure(HttpSecurity http) throws Exception {
             http.securityMatchers(cfg->cfg.requestMatchers("/api/autos/**","/api/renters/**","/api/autorentals/**"));
 
-            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/autos/**").permitAll());
+            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/autos/**","/api/autorentals/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/renters/**").authenticated());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.POST,"/api/autos/query/**","/api/autorentals/query/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.HEAD).permitAll());
@@ -63,7 +63,7 @@ public class SecurityConfiguration {
             http.securityMatchers(cfg->cfg.requestMatchers("/api/whoAmI/**","/api/autos/**","/api/renters/**","/api/autorentals/**"));
 
             http.authorizeHttpRequests(cfg->cfg.requestMatchers("/api/whoAmI/**").permitAll());
-            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/autos/**").permitAll());
+            http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/autos/**","/api/autorentals/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.POST,"/api/autos/query/**","/api/autorentals/query/**").permitAll());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.GET,"/api/renters/**").authenticated());
             http.authorizeHttpRequests(cfg->cfg.requestMatchers(HttpMethod.HEAD).permitAll());

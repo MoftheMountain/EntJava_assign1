@@ -28,7 +28,7 @@ public class ApiImplNTestConfiguration {
     @Bean
     @Lazy
     @ConditionalOnMissingBean
-    public AutoRentalsAPI autoRentalsAPIClient(RestTemplate restTemplate, ServerConfig serverConfig){
+    public AutoRentalsAPIClient autoRentalsAPIClient(RestTemplate restTemplate, ServerConfig serverConfig){
         return new AutoRentalsAPIClient(restTemplate,serverConfig,MediaType.APPLICATION_JSON);
     }
 

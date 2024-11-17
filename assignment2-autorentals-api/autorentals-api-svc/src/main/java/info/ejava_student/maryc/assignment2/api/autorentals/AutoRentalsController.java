@@ -70,7 +70,8 @@ public class AutoRentalsController {
 
     @RequestMapping(path= AutoRentalsAPI.AUTORENTAL_PATH,
             method= RequestMethod.PUT,
-            consumes = {MediaType.APPLICATION_JSON_VALUE})
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<AutoRentalDTO> updateAuto(@PathVariable("id") String id,
                                               @RequestBody AutoRentalDTO autoRentalUpdate) {
         AutoRentalDTO updatedAutoRental = autoRentalsService.updateAutoRental(id, autoRentalUpdate);

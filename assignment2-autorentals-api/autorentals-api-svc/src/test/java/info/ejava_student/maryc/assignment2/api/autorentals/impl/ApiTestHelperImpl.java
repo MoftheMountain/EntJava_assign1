@@ -34,12 +34,12 @@ public class ApiTestHelperImpl implements ApiTestHelper<AutoRentalDTO> {
 private URI baseUrl;
 private RestTemplate restTemplate;
 private MediaType mediaType;
-private AutoRentalsAPIClient autoRentalsAPIClient;
+private AutoRentalsAPI autoRentalsAPI;
     public ApiTestHelperImpl(RestTemplate restTemplate, ServerConfig serverConfig){
         this.baseUrl = serverConfig.getBaseUrl();
         this.restTemplate = restTemplate;
         this.mediaType = MediaType.APPLICATION_JSON;
-        this.autoRentalsAPIClient = new AutoRentalsAPIClient(restTemplate, new ServerConfig().withBaseUrl(baseUrl).build(),mediaType);
+        this.autoRentalsAPI = new AutoRentalsAPIClient(restTemplate, new ServerConfig().withBaseUrl(baseUrl).build(),mediaType);
     }
     //you may need a reusable mechanism to construct DTO instances
 
@@ -157,26 +157,26 @@ private AutoRentalsAPIClient autoRentalsAPIClient;
 
     @Override
     public ResponseEntity<AutoRentalDTO> createContract(AutoRentalDTO proposedRental) {
-        ResponseEntity<AutoRentalDTO> savedRental = autoRentalsAPIClient.createAutoRental(proposedRental);
+        ResponseEntity<AutoRentalDTO> savedRental = autoRentalsAPI.createAutoRental(proposedRental);
         return savedRental;
     }
 
     @Override
     public ResponseEntity<AutoRentalDTO> modifyContract(AutoRentalDTO proposedRental) {
-        ResponseEntity<AutoRentalDTO> updatedRental = autoRentalsAPIClient.updateAutoRental(proposedRental.getId(),proposedRental);
+        ResponseEntity<AutoRentalDTO> updatedRental = autoRentalsAPI.updateAutoRental(proposedRental.getId(),proposedRental);
         return updatedRental;
     }
 
     @Override
     public ResponseEntity<AutoRentalDTO> getRental(AutoRentalDTO rentalContract) {
-        ResponseEntity<AutoRentalDTO>foundRental = autoRentalsAPIClient.getAutoRental(rentalContract.getId());
+        ResponseEntity<AutoRentalDTO>foundRental = autoRentalsAPI.getAutoRental(rentalContract.getId());
         return foundRental;
 
     }
 
     @Override
     public ResponseEntity<AutoRentalDTO> getRentalById(String rentalId) {
-        ResponseEntity<AutoRentalDTO>foundRental = autoRentalsAPIClient.getAutoRental(rentalId);
+        ResponseEntity<AutoRentalDTO>foundRental = autoRentalsAPI.getAutoRental(rentalId);
         return foundRental;
 
     }
@@ -189,19 +189,19 @@ private AutoRentalsAPIClient autoRentalsAPIClient;
                 .startDate(searchParams.getStartDate())
                 .endDate(searchParams.getEndDate())
                 .build();
-        ResponseEntity<AutoRentalListDTO> response = autoRentalsAPIClient.queryAutoRentals(probe, searchParams.getPageNumber(), searchParams.getPageSize());
+        ResponseEntity<AutoRentalListDTO> response = autoRentalsAPI.queryAutoRentals(probe, searchParams.getPageNumber(), searchParams.getPageSize());
         return response.getBody().getContents();
     }
 
     @Override
     public ResponseEntity<Void> removeRental(String rentalId) {
-        ResponseEntity<Void> response = autoRentalsAPIClient.removeAutoRental(rentalId);
+        ResponseEntity<Void> response = autoRentalsAPI.removeAutoRental(rentalId);
         return response;
     }
 
     @Override
     public ResponseEntity<Void> removeAllRentals() {
-        ResponseEntity<Void> response =  autoRentalsAPIClient.removeAllAutoRentals();
+        ResponseEntity<Void> response =  autoRentalsAPI.removeAllAutoRentals();
         return response;
     }
 }

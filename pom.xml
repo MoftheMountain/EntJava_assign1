@@ -20,14 +20,19 @@
     <modules>
 
        <!-- <module>assignment1-autorentals-beanfactory</module>
+        <module>assignment0-autorentals-javaapp</module>
+        <module>assignment0-autorentals-bootapp</module>
+        <module>assignment1-autorentals-beanfactory</module>
         <module>assignment1-autorentals-propertysource</module>
+        <module>assignment1-autorentals-configprops</module>
         <module>assignment1-autorentals-autoconfig</module>
         <module>assignment1-autorentals-logging</module>
-        <module>assignment1-autorentals-configprops</module>
         <module>assignment1-autorentals-testing</module>
-		-->
+        -->
 		<module>assignment2-autorentals-api</module>
-		<module>assignment3-autorentals-security</module>
+        <module>assignment3-autorentals-security</module>
+		<module>assignment4-autorentals-it</module>
+        <!--<module>assignment5-autorentals-db</module>-->
 
     </modules>
 

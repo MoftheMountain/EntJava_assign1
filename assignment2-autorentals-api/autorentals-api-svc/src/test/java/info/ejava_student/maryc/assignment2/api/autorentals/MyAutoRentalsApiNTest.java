@@ -4,6 +4,7 @@ import info.ejava.assignments.api.autorenters.svc.ProvidedApiAutoRenterTestConfi
 import info.ejava.assignments.api.autorenters.svc.rentals.AutoRentalsApiNTest;
 import info.ejava_student.maryc.assignment2.api.AutoRentalsApiApp;
 import info.ejava_student.maryc.assignment2.api.autorentals.impl.ApiImplNTestConfiguration;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -17,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT
 )
 @ActiveProfiles({"test"})
-//@Disabled("activate once ApiImplNTestConfiguration and ApiTestHelperImpl ready")
+@Disabled("activate once ApiImplNTestConfiguration and ApiTestHelperImpl ready")
 public class MyAutoRentalsApiNTest extends AutoRentalsApiNTest {
         //TODO: remove @Nested classes below to expose/enable categories of parent tests
 

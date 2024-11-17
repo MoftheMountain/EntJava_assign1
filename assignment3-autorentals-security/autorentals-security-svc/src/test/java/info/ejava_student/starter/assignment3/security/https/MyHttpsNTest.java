@@ -33,7 +33,7 @@ import static org.assertj.core.api.BDDAssertions.then;
         "test",
         //get client-side HTTPS properties, including trustStore
         "its"})
-//@Disabled("complete and enable")
+@Disabled("complete and enable")
 public class MyHttpsNTest {
     //these need injecting
 

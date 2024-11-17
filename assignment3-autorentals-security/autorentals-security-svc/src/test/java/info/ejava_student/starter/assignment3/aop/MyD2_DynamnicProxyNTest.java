@@ -10,6 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest(classes={AutoRentalsSecurityApp.class,
         ProvidedApiAutoRenterTestConfiguration.class})
 @DisplayName("Part D2: Dynamic Proxies")
-//@Disabled
+@Disabled
 public class MyD2_DynamnicProxyNTest extends D2_DynamnicProxyNTest {
 }

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>info.ejava-student.maryc.assignment4.autorentals</groupId>
+        <artifactId>assignment4-autorentals-it</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>autorentals-it-docker</artifactId>
+    <name>MaryC::Assignment4::Integration Test::Docker IT</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <layered>true</layered>
+      <security.groupId>info.ejava-student.maryc.assignment3.autorentals</security.groupId>
+      <security.version>1.0-SNAPSHOT</security.version>
+
+
+        <spring-boot.run.skip>true</spring-boot.run.skip>
+        <spring-boot.stop.skip>true</spring-boot.stop.skip>
+
+
+        <!-- configure the fabric8:docker plugin using properties-->
+      <docker.verbose>true</docker.verbose>
+      <docker.contextDir>${project.basedir}</docker.contextDir>
+      <docker.dockerFile>${basedir}/src/main/docker/Dockerfile</docker.dockerFile>
+      <docker.name>${project.artifactId}:${project.version}</docker.name>
+      <docker.ports.api.port>${my.server.port}:8080</docker.ports.api.port>
+      <docker.cmd>--spring.profiles.active=nosecurity</docker.cmd>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${security.groupId}</groupId>
+            <artifactId>autorentals-security-svc</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-port-number</id>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- until this is filled out -->
+                    <mainClass>info.ejava_student.maryc.assignment3.assignment3.security.AutoRentalsSecurityApp</mainClass>
+                    <layers>
+                        <enabled>${layered}</enabled>
+                    </layers>
+                    <profiles>nosecurity</profiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <configuration>
+
+                    <containerNamePattern>%a-%t</containerNamePattern>
+                    <images>
+                        <image>
+                            <alias>${project.artifactId}</alias>
+                            <external>
+                                <type>properties</type>
+                                <prefix>docker</prefix>
+                                <mode>override</mode>
+                            </external>
+                            <run>
+                                <wait>
+                                    <http>
+                                        <url>http://${ejava-parent.docker.hostname}:${my.server.port}/api/autorentals</url>
+                                    </http>
+                                    <time>20000</time>
+                                </wait>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-image</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+<!--                    <execution>
+                        <id>start-container</id>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>-->
+                    <execution>
+                        <id>stop-container</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+
+                    <systemPropertyVariables combine.children="append">
+                        <it.server.host>${ejava-parent.docker.hostname}</it.server.host>
+
+                    <!--
+                        <it.server.host>
+                        <it.server.port>
+                        -->
+                    </systemPropertyVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                    </execution>
+                    <execution>
+                        <id>verify</id>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

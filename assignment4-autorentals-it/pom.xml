@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+	
+    <parent>
+        <groupId>info.ejava-student.maryc.assignment1.autorentals</groupId>
+        <artifactId>assignment1-autorentals-maryc</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>info.ejava-student.maryc.assignment4.autorentals</groupId>
+    <artifactId>assignment4-autorentals-it</artifactId>
+    <name>MaryC::Assignment4::Integration Test::AutoRentals Root</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!-- pick 1 out of 3 choices -->
+        <!--
+		<module>autorentals-it-springboot</module>
+        <module>autorentals-it-testcontainers</module>
+		-->
+		<module>autorentals-it-docker</module>
+    </modules>
+</project>

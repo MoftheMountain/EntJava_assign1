@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>info.ejava-student.starter.assignment4.autorentals</groupId>
+        <artifactId>assignment4-autorentals-it</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>autorentals-it-springboot</artifactId>
+    <name>Starter::Assignment4::Integration Test::Spring Boot IT</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <security.groupId>info.ejava-student.starter.assignment3.autorentals</security.groupId>
+        <security.version>1.0-SNAPSHOT</security.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>${security.groupId}</groupId>
+            <artifactId>autorentals-security-svc</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+<!--
+                <executions>
+                        <id>generate-port-number</id>
+                </executions>
+-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip> <!-- until this is filled out -->
+                    <!--
+                    <mainClass>...</mainClass>
+                    <profiles>
+                    </profiles>
+                    -->
+                </configuration>
+<!--
+                <executions>
+                        <id>start-server</id>
+                        <id>stop-server</id>
+                </executions>
+-->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+<!--
+                <configuration>
+                    <systemPropertyVariables>
+                        <it.server.host>
+                        <it.server.port>
+                    </systemPropertyVariables>
+                </configuration>
+-->
+                <!--
+                <executions>
+                        <id>integration-test</id>
+                        <id>verify</id>
+                </executions>
+                -->
+            </plugin>
+        </plugins>
+    </build>
+</project>

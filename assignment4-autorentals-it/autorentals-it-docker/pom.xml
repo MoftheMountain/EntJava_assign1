@@ -23,7 +23,6 @@
         <spring-boot.run.skip>true</spring-boot.run.skip>
         <spring-boot.stop.skip>true</spring-boot.stop.skip>
 
-
         <!-- configure the fabric8:docker plugin using properties-->
       <docker.verbose>true</docker.verbose>
       <docker.contextDir>${project.basedir}</docker.contextDir>
@@ -53,6 +52,16 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker-maven-plugin.version}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -60,6 +69,15 @@
                 <executions>
                     <execution>
                         <id>generate-port-number</id>
+                        <goals>
+                            <goal>reserve-network-port</goal>
+                        </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <portNames>
+                                <portName>my.server.port</portName>
+                            </portNames>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -108,15 +126,15 @@
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>build</goal>
-                            <goal>start</goal>
+                            <!--<goal>start</goal>-->
                         </goals>
                     </execution>
-<!--                    <execution>
+                    <execution>
                         <id>start-container</id>
                         <goals>
                             <goal>start</goal>
                         </goals>
-                    </execution>-->
+                    </execution>
                     <execution>
                         <id>stop-container</id>
                         <phase>post-integration-test</phase>
@@ -133,20 +151,22 @@
                 <configuration>
 
                     <systemPropertyVariables combine.children="append">
-                        <it.server.host>${ejava-parent.docker.hostname}</it.server.host>
-
-                    <!--
-                        <it.server.host>
-                        <it.server.port>
-                        -->
+                        <it.server.host>${ejava-parent.docker.hostname}</it.server.host>-->
+                        <it.server.port>${my.server.port}</it.server.port>
                     </systemPropertyVariables>
                 </configuration>
                 <executions>
                     <execution>
                         <id>integration-test</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
                     </execution>
                     <execution>
                         <id>verify</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

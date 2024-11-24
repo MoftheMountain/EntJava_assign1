@@ -9,7 +9,9 @@ import java.net.URI;
 
 //@SpringBootConfiguration
 //@EnableAutoConfiguration
+
 public class IntegrationTestConfiguration {
+
     @Bean
     @ConfigurationProperties("it.server")
     ServerConfig serverConfig() {
@@ -19,8 +21,23 @@ public class IntegrationTestConfiguration {
     @Bean
     URI rentalsURL(ServerConfig serverConfig) {
         return UriComponentsBuilder.fromUri(serverConfig.getBaseUrl())
-                //.path("...")
+                .path("/api/autorentals")
                 .build()
                 .toUri();
     }
+/*
+    @Bean
+    public RestTemplate anonymousUser(RestTemplateBuilder builder,
+                                      ClientHttpRequestFactory requestFactory) {
+        return builder.requestFactory(
+                        //used to read the streams twice
+                        ()->new BufferingClientHttpRequestFactory(requestFactory))
+                .interceptors(new RestTemplateLoggingFilter())
+                .build();
+    }
+
+    @Bean
+    public ClientHttpRequestFactory httpsRequestFactory() {
+        return new SimpleClientHttpRequestFactory();
+    }*/
 }

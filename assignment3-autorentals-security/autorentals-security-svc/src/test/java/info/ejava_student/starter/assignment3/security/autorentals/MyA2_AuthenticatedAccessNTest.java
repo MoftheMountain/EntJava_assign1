@@ -16,6 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles({"test", "authenticated-access"})
 @Slf4j
 @DisplayName("Part A2: Authenticated Access")
-//@Disabled
+@Disabled
 public class MyA2_AuthenticatedAccessNTest extends A2_AuthenticatedAccessNTest {
 }

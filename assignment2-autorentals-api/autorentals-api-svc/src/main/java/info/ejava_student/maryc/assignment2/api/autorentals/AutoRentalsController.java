@@ -124,7 +124,7 @@ public class AutoRentalsController {
         Pageable pageable = (null!=pageSize && null!=pageNumber && pageSize>0 && pageNumber>=0) ?
                 PageRequest.of(pageNumber, pageSize) : Pageable.unpaged();
         SearchParams searchParams = SearchParams.builder()
-                .timePeriod(new TimePeriod(startDate, endDate))
+                .timePeriod(TimePeriod.create(startDate, endDate))
                 .autoId(autoId)
                 .renterId(renterId)
                 .build();

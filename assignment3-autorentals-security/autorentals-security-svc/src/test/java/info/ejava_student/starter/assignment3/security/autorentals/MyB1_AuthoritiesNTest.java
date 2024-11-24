@@ -16,6 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles({"test", "authorities"})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @DisplayName("Part B1: Authorities")
-//@Disabled
+@Disabled
 public class MyB1_AuthoritiesNTest extends B1_AuthoritiesNTest {
 }

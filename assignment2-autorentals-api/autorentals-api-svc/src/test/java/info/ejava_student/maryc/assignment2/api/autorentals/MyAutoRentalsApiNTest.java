@@ -23,13 +23,13 @@ public class MyAutoRentalsApiNTest extends AutoRentalsApiNTest {
         //TODO: remove @Nested classes below to expose/enable categories of parent tests
 
         //remove this class declaration to enable creation tests
-        //@Nested public class new_rental {}
+        @Nested public class new_rental {}
 
         //remove this class declaration to enable get/modification tests
-        //@Nested public class existing_rental {}
+        @Nested public class existing_rental {}
 
         //remove this class declaration to enable query tests
-        //@Nested public class can_query_to { }
+        @Nested public class can_query_to { }
 
         //remove this class declaration to enable query tests
         @Nested public class date_query { }

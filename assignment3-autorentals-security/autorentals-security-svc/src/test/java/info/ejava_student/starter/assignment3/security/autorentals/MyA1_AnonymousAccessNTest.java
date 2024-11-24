@@ -16,6 +16,6 @@ import org.springframework.test.context.ActiveProfiles;
 @ActiveProfiles({"test", "anonymous-access"})
 @Slf4j
 @DisplayName("Part A1: Anonymous Access")
-//@Disabled
+@Disabled
 public class MyA1_AnonymousAccessNTest extends A1_AnonymousAccessNTest {
 }

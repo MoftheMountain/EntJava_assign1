@@ -68,6 +68,18 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>add-integration-test-source</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>src\java\info\ejava_student\starter\assignment4.docker</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>generate-port-number</id>
                         <goals>
                             <goal>reserve-network-port</goal>

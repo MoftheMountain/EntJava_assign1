@@ -1,7 +1,6 @@
 package info.ejava_student.starter.assignment4.docker;
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,7 +19,7 @@ import static org.assertj.core.api.BDDAssertions.then;
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @ActiveProfiles({"test","nosecurity","it"})
 @Slf4j
-class MyIntegrationNTest {
+public class MyIntegrationTestIT {
     @Autowired
     private URI rentalsUrl;
 

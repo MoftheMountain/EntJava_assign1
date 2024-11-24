@@ -3,6 +3,7 @@ package info.ejava_student.starter.assignment4.docker;
 import info.ejava.examples.common.web.ServerConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -13,11 +14,13 @@ import java.net.URI;
 public class IntegrationTestConfiguration {
 
     @Bean
+    @Lazy
     @ConfigurationProperties("it.server")
     ServerConfig serverConfig() {
         return new ServerConfig();
     }
 
+    @Lazy
     @Bean
     URI rentalsURL(ServerConfig serverConfig) {
         return UriComponentsBuilder.fromUri(serverConfig.getBaseUrl())
@@ -25,19 +28,4 @@ public class IntegrationTestConfiguration {
                 .build()
                 .toUri();
     }
-/*
-    @Bean
-    public RestTemplate anonymousUser(RestTemplateBuilder builder,
-                                      ClientHttpRequestFactory requestFactory) {
-        return builder.requestFactory(
-                        //used to read the streams twice
-                        ()->new BufferingClientHttpRequestFactory(requestFactory))
-                .interceptors(new RestTemplateLoggingFilter())
-                .build();
-    }
-
-    @Bean
-    public ClientHttpRequestFactory httpsRequestFactory() {
-        return new SimpleClientHttpRequestFactory();
-    }*/
 }

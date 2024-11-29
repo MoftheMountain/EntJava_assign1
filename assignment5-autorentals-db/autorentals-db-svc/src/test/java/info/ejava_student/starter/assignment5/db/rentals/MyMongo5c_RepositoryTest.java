@@ -4,7 +4,7 @@ import info.ejava.assignments.db.autorentals.Mongo5c_RepositoryTest;
 import info.ejava_student.starter.assignment5.db.DisableEmbeddedMongoConfiguration;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbAssignmentTestConfiguration;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbClientTestConfiguration;
-import info.ejava_student.starter.assignment5.mongo.assignment.MongoAssignmentDBConfiguration;
+import info.ejava_student.maryc.assignment5.mongo.assignment.MongoAssignmentDBConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.TestInstance;

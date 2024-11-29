@@ -1,4 +1,4 @@
-package info.ejava_student.starter.assignment5.db.autorentals.client;
+package info.ejava_student.maryc.assignment5.db.autorentals.client;
 
 import lombok.Data;
 

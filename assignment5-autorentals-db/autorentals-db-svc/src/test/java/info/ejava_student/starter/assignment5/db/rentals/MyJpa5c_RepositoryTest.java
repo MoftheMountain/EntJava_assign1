@@ -4,7 +4,7 @@ import de.flapdoodle.embed.mongo.spring.autoconfigure.EmbeddedMongoAutoConfigura
 import info.ejava.assignments.db.autorentals.Jpa5c_RepositoryTest;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbAssignmentTestConfiguration;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbClientTestConfiguration;
-import info.ejava_student.starter.assignment5.jpa.assignment.JpaAssignmentDBConfiguration;
+import info.ejava_student.maryc.assignment5.jpa.assignment.JpaAssignmentDBConfiguration;
 import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;

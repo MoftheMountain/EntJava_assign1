@@ -1,6 +1,6 @@
-package info.ejava_student.starter.assignment5.pageable;
+package info.ejava_student.maryc.assignment5.pageable;
 
-import info.ejava_student.starter.assignment2.api.autorentals.AutoRentalsService;
+import info.ejava_student.maryc.assignment2.api.autorentals.AutoRentalsService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -31,8 +31,8 @@
         -->
 		<module>assignment2-autorentals-api</module>
         <module>assignment3-autorentals-security</module>
-		<module>assignment4-autorentals-it</module>
-        <!--<module>assignment5-autorentals-db</module>-->
+		<!--<module>assignment4-autorentals-it</module>-->
+        <module>assignment5-autorentals-db</module>
 
     </modules>
 

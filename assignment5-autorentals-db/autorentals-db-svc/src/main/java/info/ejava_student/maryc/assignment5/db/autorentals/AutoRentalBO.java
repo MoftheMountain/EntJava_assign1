@@ -1,8 +1,8 @@
-package info.ejava_student.starter.assignment5.db.autorentals;
+package info.ejava_student.maryc.assignment5.db.autorentals;
 
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
 import info.ejava.assignments.db.autorenters.svc.rentals.RentalBO;
-import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
 import lombok.*;
 
 import java.util.UUID;

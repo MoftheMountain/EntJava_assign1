@@ -1,8 +1,8 @@
-package info.ejava_student.starter.assignment5.jpa.assignment;
+package info.ejava_student.maryc.assignment5.jpa.assignment;
 
 import info.ejava.assignments.db.autorenters.rentals.JpaAssignmentService;
-import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalDTO;
-import info.ejava_student.starter.assignment5.db.autorentals.AutoRentalBO;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;

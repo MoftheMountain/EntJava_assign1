@@ -4,9 +4,10 @@ import info.ejava.assignments.api.autorenters.dto.rentals.TimePeriod;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
 import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
 import info.ejava.assignments.db.autorentals.DbTestHelper;
-import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalDTO;
-import info.ejava_student.starter.assignment2.api.autorentals.impl.ApiTestHelperImpl;
-import info.ejava_student.starter.assignment5.db.autorentals.AutoRentalBO;
+import info.ejava_student.maryc.assignment2.api.autorentals.impl.ApiTestHelperImpl;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
+
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

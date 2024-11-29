@@ -1,12 +1,12 @@
-package info.ejava_student.starter.assignment5.mongo.autorentals;
+package info.ejava_student.maryc.assignment5.mongo.autorentals;
 
 import info.ejava.assignments.api.autorenters.svc.autos.AutosService;
 import info.ejava.assignments.api.autorenters.svc.renters.RentersService;
 import info.ejava.assignments.db.autorenters.svc.rentals.RentalsMapper;
-import info.ejava_student.starter.assignment2.api.autorentals.AutoRentalsService;
-import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalDTO;
-import info.ejava_student.starter.assignment5.db.autorentals.AutoRentalBO;
-import info.ejava_student.starter.assignment5.db.autorentals.AutoRentalMapper;
+import info.ejava_student.maryc.assignment2.api.autorentals.AutoRentalsService;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;

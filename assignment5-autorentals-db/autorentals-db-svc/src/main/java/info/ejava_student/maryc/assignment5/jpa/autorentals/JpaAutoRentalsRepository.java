@@ -1,4 +1,4 @@
-package info.ejava_student.starter.assignment5.jpa.autorentals;
+package info.ejava_student.maryc.assignment5.jpa.autorentals;
 
 public interface JpaAutoRentalsRepository {
 }

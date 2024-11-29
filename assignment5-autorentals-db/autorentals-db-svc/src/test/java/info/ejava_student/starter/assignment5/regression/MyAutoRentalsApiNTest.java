@@ -2,8 +2,8 @@ package info.ejava_student.starter.assignment5.regression;
 
 import info.ejava.assignments.api.autorenters.svc.ProvidedApiAutoRenterTestConfiguration;
 import info.ejava.assignments.api.autorenters.svc.rentals.AutoRentalsApiNTest;
-import info.ejava_student.starter.assignment2.api.autorentals.impl.ApiImplNTestConfiguration;
-import info.ejava_student.starter.assignment5.db.AutoRentalsDbApp;
+import info.ejava_student.maryc.assignment2.api.autorentals.impl.ApiImplNTestConfiguration;
+import info.ejava_student.maryc.assignment5.db.AutoRentalsDbApp;
 import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;

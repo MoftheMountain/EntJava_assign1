@@ -2,7 +2,7 @@ package info.ejava_student.starter.assignment5.db.rentals.impl;
 
 import info.ejava.assignments.db.autorentals.DbTestHelper;
 import info.ejava.examples.common.web.ServerConfig;
-import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalsAPIClient;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPIClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

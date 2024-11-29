@@ -4,7 +4,7 @@ import info.ejava.assignments.db.autorentals.Mongo5b_DocumentTest;
 import info.ejava_student.starter.assignment5.db.DisableEmbeddedMongoConfiguration;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbAssignmentTestConfiguration;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbClientTestConfiguration;
-import info.ejava_student.starter.assignment5.mongo.assignment.MongoAssignmentDBConfiguration;
+import info.ejava_student.maryc.assignment5.mongo.assignment.MongoAssignmentDBConfiguration;
 import org.junit.jupiter.api.Disabled;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;

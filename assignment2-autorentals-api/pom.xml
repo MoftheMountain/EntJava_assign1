@@ -10,6 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>info.ejava-student.maryc.assignment2.autorentals</groupId>
     <artifactId>assignment2-autorentals-api</artifactId>
     <name>MaryC::Assignment2::API::AutoRentals Root</name>
     <packaging>pom</packaging>

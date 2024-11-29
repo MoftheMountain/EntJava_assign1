@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>info.ejava-student.starter.assignment5.autorentals</groupId>
+        <groupId>info.ejava-student.maryc.assignment5.autorentals</groupId>
         <artifactId>assignment5-autorentals-db</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>

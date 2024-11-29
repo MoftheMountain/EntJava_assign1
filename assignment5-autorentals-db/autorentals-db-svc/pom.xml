@@ -33,21 +33,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-<!--
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
--->
-        <!--
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-        -->
+
 
         <!-- databases -->
-<!--
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -58,10 +57,9 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
--->
 
         <!-- schema management -->
-<!--
+
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
@@ -73,7 +71,6 @@
             <scope>runtime</scope>
         </dependency>
 
--->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -168,6 +165,11 @@
             <artifactId>autorenters-support-pageable-svc</artifactId>
             <classifier>tests</classifier>
             <version>${ejava.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

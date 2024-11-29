@@ -35,6 +35,8 @@ private URI baseUrl;
 private RestTemplate restTemplate;
 private MediaType mediaType;
 private AutoRentalsAPI autoRentalsAPI;
+    public ApiTestHelperImpl(){
+    }
     public ApiTestHelperImpl(RestTemplate restTemplate, ServerConfig serverConfig){
         this.baseUrl = serverConfig.getBaseUrl();
         this.restTemplate = restTemplate;

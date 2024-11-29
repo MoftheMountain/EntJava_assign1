@@ -1,11 +1,11 @@
-package info.ejava_student.starter.assignment5.db;
+package info.ejava_student.maryc.assignment5.db;
 
-import info.ejava_student.starter.assignment3.aop.autorentals.AOPConfiguration;
-import info.ejava_student.starter.assignment3.security.autorentals.SecureAutoRentalsConfiguration;
-import info.ejava_student.starter.assignment3.security.config.SecurityConfiguration;
-import info.ejava_student.starter.assignment5.jpa.autorentals.JpaAutoRentalsConfiguration;
-import info.ejava_student.starter.assignment5.mongo.autorentals.MongoAutoRentalsConfiguration;
-import info.ejava_student.starter.assignment5.pageable.PageableConfiguration;
+import info.ejava_student.maryc.assignment3.assignment3.aop.autorentals.AOPConfiguration;
+import info.ejava_student.maryc.assignment3.assignment3.security.autorentals.SecureAutoRentalsConfiguration;
+import info.ejava_student.maryc.assignment3.assignment3.security.config.SecurityConfiguration;
+import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsConfiguration;
+import info.ejava_student.maryc.assignment5.mongo.autorentals.MongoAutoRentalsConfiguration;
+import info.ejava_student.maryc.assignment5.pageable.PageableConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;

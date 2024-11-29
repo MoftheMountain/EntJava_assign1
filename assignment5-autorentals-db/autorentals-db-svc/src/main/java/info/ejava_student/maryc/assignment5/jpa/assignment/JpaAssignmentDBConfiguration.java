@@ -1,11 +1,11 @@
-package info.ejava_student.starter.assignment5.jpa.assignment;
+package info.ejava_student.maryc.assignment5.jpa.assignment;
 
 import info.ejava.assignments.db.autorenters.rentals.JpaAssignmentService;
 import info.ejava.assignments.db.autorenters.svc.rentals.RentalsMapper;
-import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalDTO;
-import info.ejava_student.starter.assignment5.db.autorentals.AutoRentalBO;
-import info.ejava_student.starter.assignment5.db.autorentals.AutoRentalMapper;
-import info.ejava_student.starter.assignment5.jpa.autorentals.JpaAutoRentalsRepository;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalMapper;
+import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsRepository;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;

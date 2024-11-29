@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <properties>
-      <api.groupId>info.ejava-student.maryc.assignment1.autorentals</api.groupId>
+      <api.groupId>info.ejava-student.maryc.assignment2.autorentals</api.groupId>
       <api.version>1.0-SNAPSHOT</api.version>
     </properties>
 

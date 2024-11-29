@@ -1,4 +1,4 @@
-package info.ejava_student.starter.assignment5.db.autorentals.client;
+package info.ejava_student.maryc.assignment5.db.autorentals.client;
 
 import info.ejava_student.starter.assignment2.api.autorentals.client.AutoRentalsAPI;
 import org.springframework.data.domain.Pageable;

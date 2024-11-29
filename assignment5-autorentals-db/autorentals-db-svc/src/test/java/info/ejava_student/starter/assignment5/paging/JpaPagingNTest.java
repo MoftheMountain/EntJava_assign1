@@ -3,7 +3,7 @@ package info.ejava_student.starter.assignment5.paging;
 import de.flapdoodle.embed.mongo.spring.autoconfigure.EmbeddedMongoAutoConfiguration;
 import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
 import info.ejava.assignments.security.autorenters.svc.ProvidedAuthorizationTestHelperConfiguration;
-import info.ejava_student.starter.assignment5.db.AutoRentalsDbApp;
+import info.ejava_student.maryc.assignment5.db.AutoRentalsDbApp;
 import info.ejava_student.starter.assignment5.db.rentals.TestProfileResolver;
 import info.ejava_student.starter.assignment5.db.rentals.impl.DbClientTestConfiguration;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
-package info.ejava_student.starter.assignment5.pageable;
+package info.ejava_student.maryc.assignment5.pageable;
 
-import info.ejava_student.starter.assignment5.db.autorentals.client.AutoRentalPageDTO;
-import info.ejava_student.starter.assignment5.db.autorentals.client.AutoRentalsPageableAPI;
+import info.ejava_student.maryc.assignment5.db.autorentals.client.AutoRentalPageDTO;
+import info.ejava_student.maryc.assignment5.db.autorentals.client.AutoRentalsPageableAPI;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -24,6 +24,6 @@ import org.springframework.test.context.ActiveProfiles;
         EmbeddedMongoAutoConfiguration.class
 })
 //@Disabled
-@Order(Ordered.HIGHEST_PRECEDENCE) //we need this test to run first, immediately after migration
+@Order(Ordered.HIGHEST_PRECEDENCE) //we need this test to run_env.sh first, immediately after migration
 public class MyJpa5a_SchemaTest extends Jpa5a_SchemaTest {
 }

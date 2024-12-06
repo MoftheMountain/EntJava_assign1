@@ -185,7 +185,7 @@
                         <profile>authorization</profile>
                         <!-- the following is your option as what to set -->
                         <profile>postgres</profile>
-                        <profile>mongodb</profile>
+                        <!--<profile>mongodb</profile>-->
                     </profiles>
                 </configuration>
                 <executions>

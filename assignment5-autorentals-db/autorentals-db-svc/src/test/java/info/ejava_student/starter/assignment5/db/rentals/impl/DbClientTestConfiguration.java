@@ -2,13 +2,17 @@ package info.ejava_student.starter.assignment5.db.rentals.impl;
 
 import info.ejava.assignments.db.autorentals.DbTestHelper;
 import info.ejava.examples.common.web.ServerConfig;
+import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPIClient;
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
+import info.ejava_student.maryc.assignment5.db.autorentals.client.AutoRentalsPageableAPIClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -31,7 +35,14 @@ public class DbClientTestConfiguration {
     @Bean
     @ConditionalOnMissingBean({RestTemplate.class,ServerConfig.class})
     public DbTestHelper dbOnlyTestHelper() {
-        return null;
+        return new DbTestHelperImpl();
+    }
+
+    @Bean
+    @Lazy
+    @ConditionalOnMissingBean
+    public AutoRentalsPageableAPIClient autoRentalsPageableAPIClient(RestTemplate restTemplate, ServerConfig serverConfig){
+        return new AutoRentalsPageableAPIClient();
     }
 
 

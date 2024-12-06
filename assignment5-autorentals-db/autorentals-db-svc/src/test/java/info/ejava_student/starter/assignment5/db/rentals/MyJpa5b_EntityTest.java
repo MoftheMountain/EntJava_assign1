@@ -23,6 +23,6 @@ import org.springframework.test.context.ActiveProfiles;
         EmbeddedMongoAutoConfiguration.class
 })
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Disabled
+//@Disabled
 public class MyJpa5b_EntityTest extends Jpa5b_EntityTest  {
 }

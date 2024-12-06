@@ -6,13 +6,15 @@ create table rentals_autorental (
     renter_id varchar(36) not null,
     start_date date not null,
     end_date date not null,
-    amount decimal(65,2) unsigned not null,
-    make_model varchar(36) not null,
+    amount decimal(10,2) not null,
+    make_model varchar(30) not null,
     renter_name varchar(50) not null,
-    renter_age int(3) unsigned not null,
+    renter_age int not null,
     address_street varchar(40),
-    username varchar(25),
-
+    address_city varchar(40),
+    address_state varchar(2),
+    address_zip varchar (15),
+    username varchar(32) not null,
     constraint autorental_pk primary key (id)
 );
 
@@ -25,6 +27,6 @@ comment on column rentals_autorental.end_date is 'rental end inclusive';
 comment on column rentals_autorental.amount is 'cost of rental';
 comment on column rentals_autorental.make_model is 'make and model of auto';
 comment on column rentals_autorental.renter_name is 'first and last renter name';
-comment on column rentals_autorental. renter_age is 'renter age at time of rental';
+comment on column rentals_autorental.renter_age is 'renter age at time of rental';
 comment on column rentals_autorental.address_street is 'auto street';
 comment on column rentals_autorental.username is 'username';

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.Query;
 import java.time.LocalDate;
 
 public interface MongoAutoRentalsRepository extends MongoRepository<AutoRentalBO, String> {
-    @Query("{ 'startDate':{$lte:?1}, 'endDate':{$gte:?0} }")
+    @Query(value="{ 'startDate':{$lte:?1}, 'endDate':{$gte:?0} }", sort="{id:1}")
     Slice<AutoRentalBO> byDateRange(LocalDate startDate, LocalDate endDate, Pageable pageable);
 
     Page<AutoRentalBO> findByAutoId(String autoId, Pageable pageable);

@@ -21,6 +21,6 @@ import org.springframework.test.context.ActiveProfiles;
         MongoAutoConfiguration.class,
         EmbeddedMongoAutoConfiguration.class
 })
-@Disabled
+//@Disabled
 public class MyJpa5c_RepositoryTest extends Jpa5c_RepositoryTest {
 }

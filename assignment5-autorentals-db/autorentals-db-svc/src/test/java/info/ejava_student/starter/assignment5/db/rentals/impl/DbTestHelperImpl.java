@@ -1,13 +1,10 @@
 package info.ejava_student.starter.assignment5.db.rentals.impl;
 
+import info.ejava.assignments.api.autorenters.dto.rentals.SearchParams;
 import info.ejava.assignments.api.autorenters.dto.rentals.TimePeriod;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
 import info.ejava.assignments.api.autorenters.dto.autos.AutoDTO;
-import info.ejava.assignments.api.autorenters.svc.rentals.ApiTestHelper;
 import info.ejava.assignments.db.autorentals.DbTestHelper;
-import info.ejava.examples.common.web.ServerConfig;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPI;
-import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalsAPIClient;
 import info.ejava_student.maryc.assignment2.api.autorentals.impl.ApiTestHelperImpl;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
 import info.ejava.assignments.api.autorenters.dto.autos.AutoDTOFactory;
@@ -15,18 +12,22 @@ import info.ejava.assignments.api.autorenters.dto.renters.RenterDTOFactory;
 
 
 import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
+
+import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalMapper;
+import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.math.BigDecimal;
 import java.net.URI;
 import java.time.LocalDate;
+import java.time.Period;
 
 public class DbTestHelperImpl extends ApiTestHelperImpl implements DbTestHelper<AutoRentalDTO, AutoRentalBO> {
 
 
     //you may need a reusable mechanism to construct DTO instances
-
 
     @Override
     public String getRentalsTableName() {
@@ -35,7 +36,7 @@ public class DbTestHelperImpl extends ApiTestHelperImpl implements DbTestHelper<
 
     @Override
     public String getRentalsEntityName() {
-        return "AutoRentalsBO";
+        return "AutoRentalBO";
     }
 
     @Override
@@ -55,7 +56,21 @@ public class DbTestHelperImpl extends ApiTestHelperImpl implements DbTestHelper<
     @Override
     public AutoRentalDTO makeFullRental(AutoDTO autoDTO, RenterDTO renterDTO, TimePeriod timePeriod, String username) {
 
-        return null;
+        BigDecimal dailyRate = autoDTO.getDailyRate();
+        AutoRentalDTO rentalDTO = AutoRentalDTO.builder()
+                .autoID(autoDTO.getId())
+                .renterID(renterDTO.getId())
+                .startDate(timePeriod.getStartDate())
+                .endDate(timePeriod.getEndDate())
+                .makeModel(autoDTO.getMake() + " " + autoDTO.getModel())
+                .renterName(renterDTO.getFirstName() + " " + renterDTO.getLastName())
+                .renterAge(Period.between(renterDTO.getDob(),LocalDate.now()).getYears())
+                .amount(dailyRate.multiply(BigDecimal.valueOf(timePeriod.getDays())))
+                .streetAddress(autoDTO.getLocation())
+                .username(username)
+                .build();
+
+        return rentalDTO;
     }
 
     /**
@@ -71,76 +86,76 @@ public class DbTestHelperImpl extends ApiTestHelperImpl implements DbTestHelper<
 
     @Override
     public String getUsername(AutoRentalDTO dto) {
-        return null;
+        return dto.getUsername();
     }
 
     @Override
     public String getRentalId(AutoRentalBO bo) {
-        return null;
+        return bo.getId();
     }
 
     @Override
     public String getAutoId(AutoRentalBO bo) {
-        return null;
+        return bo.getAutoId();
     }
 
     @Override
     public LocalDate getStartDate(AutoRentalBO bo) {
-        return null;
+        return bo.getStartDate();
     }
 
     @Override
     public LocalDate getEndDate(AutoRentalBO bo) {
-        return null;
+        return bo.getEndDate();
     }
 
     @Override
     public Integer getRenterAge(AutoRentalBO bo) {
-        return null;
+        return bo.getRenterAge();
     }
 
     @Override
     public BigDecimal getAmount(AutoRentalBO bo) {
-        return null;
+        return bo.getAmount();
     }
 
     @Override
     public String getRenterId(AutoRentalBO bo) {
-        return null;
+        return bo.getRenterId();
     }
 
     @Override
     public String getRenterName(AutoRentalBO bo) {
-        return null;
+        return bo.getRenterName();
     }
 
     @Override
     public String getMakeModel(AutoRentalBO bo) {
-        return null;
+        return bo.getMakeModel();
     }
 
     @Override
     public String getUsername(AutoRentalBO bo) {
-        return null;
+        return bo.getUsername();
     }
 
     @Override
     public String getStreet(AutoRentalBO bo) {
-        return null;
+        return bo.getStreet();
     }
 
     @Override
     public String getCity(AutoRentalBO bo) {
-        return null;
+        return bo.getCity();
     }
 
     @Override
     public String getState(AutoRentalBO bo) {
-        return null;
+        return bo.getState();
     }
 
     @Override
     public String getZip(AutoRentalBO bo) {
-        return null;
+        return bo.getZip();
     }
 }

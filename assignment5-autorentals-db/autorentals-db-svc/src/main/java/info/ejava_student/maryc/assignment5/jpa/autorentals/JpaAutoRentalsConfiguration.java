@@ -9,10 +9,13 @@ import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
 import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsRepository;
+
 @ConditionalOnProperty(prefix = "rentals", name="impl", havingValue = "jpa", matchIfMissing = true)
+@Configuration
 public class JpaAutoRentalsConfiguration {
     public RentalsMapper<AutoRentalDTO, AutoRentalBO> mapper() {
         return new AutoRentalMapper();

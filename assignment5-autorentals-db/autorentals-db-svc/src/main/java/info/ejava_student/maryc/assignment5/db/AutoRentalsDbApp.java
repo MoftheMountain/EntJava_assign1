@@ -4,12 +4,15 @@ import info.ejava_student.maryc.assignment3.assignment3.aop.autorentals.AOPConfi
 import info.ejava_student.maryc.assignment3.assignment3.security.autorentals.SecureAutoRentalsConfiguration;
 import info.ejava_student.maryc.assignment3.assignment3.security.config.SecurityConfiguration;
 import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsConfiguration;
+import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsRepository;
 import info.ejava_student.maryc.assignment5.mongo.autorentals.MongoAutoRentalsConfiguration;
 import info.ejava_student.maryc.assignment5.pageable.PageableConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -22,10 +25,15 @@ import org.springframework.security.web.SecurityFilterChain;
             SecurityConfiguration.class, //SecurityFilterChain supporting authorities and authorization
             SecureAutoRentalsConfiguration.class, //add autorentals programmatic security checks
 })
+@EnableJpaRepositories
+//@EntityScan(basePackageClasses={AutoRentalBO.class})
 public class AutoRentalsDbApp {
     public static void main(String...args) {
         SpringApplication.run(AutoRentalsDbApp.class, args);
     }
+
+    @Autowired
+    private JpaAutoRentalsRepository rentalsRepository;
 
     @Bean
     @Order(50)

@@ -3,17 +3,15 @@ package info.ejava_student.maryc.assignment5.db.autorentals;
 import info.ejava.assignments.api.autorenters.dto.renters.RenterDTO;
 import info.ejava.assignments.db.autorenters.svc.rentals.RentalBO;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 @Entity
-@Table(name ="RENTALS_AUTORENTALS")
+@Table(name ="RENTALS_AUTORENTAL")
+@NamedQuery(name="AutoRentalBO.findByDatesBetween", query="select r from AutoRentalBO r where startDate >= :startDate and endDate <= :endDate")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,9 +39,13 @@ public class AutoRentalBO implements RentalBO {
     private String makeModel;
     private String renterName;
     private Integer renterAge;
+    @Column(name="ADDRESS_STREET")
     private String street;
+    @Column(name="ADDRESS_CITY")
     private String city;
+    @Column(name="ADDRESS_STATE")
     private String state;
+    @Column(name="ADDRESS_ZIP")
     private String zip;
     private String username;
 

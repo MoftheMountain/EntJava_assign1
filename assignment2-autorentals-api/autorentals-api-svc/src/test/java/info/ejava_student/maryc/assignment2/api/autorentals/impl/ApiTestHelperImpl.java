@@ -69,6 +69,13 @@ private AutoRentalsAPI autoRentalsAPI;
                 .build();
 
         return AutoRentalDTO.builder()
+                .autoID("auto-007")
+                .renterID("renter-002")
+                .renterAge(30)
+                .username("mary")
+                .startDate(LocalDate.now())
+                .endDate(LocalDate.now())
+                .id("rental-453")
                 .makeModel("Mercury Mystique")
                 .renterName("Joe Schmo")
                 .amount(new BigDecimal(123456))

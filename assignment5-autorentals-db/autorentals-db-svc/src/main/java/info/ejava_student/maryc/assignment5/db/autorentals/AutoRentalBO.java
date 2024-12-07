@@ -5,6 +5,7 @@ import info.ejava.assignments.db.autorenters.svc.rentals.RentalBO;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Document(collection="rentals")
 
 // NOTE: the entityName and name used in the query must match
 //      query="select r from AutoRentalBO r where startDate >= :startDate and endDate <= :endDate")
@@ -30,6 +32,7 @@ public class AutoRentalBO implements RentalBO {
         }
     }
     @Id
+    @org.springframework.data.annotation.Id
     private String id;
     private String autoId;
     private String renterId;

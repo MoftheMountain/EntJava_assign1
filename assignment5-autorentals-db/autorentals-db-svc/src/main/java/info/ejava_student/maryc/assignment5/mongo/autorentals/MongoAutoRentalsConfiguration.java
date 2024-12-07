@@ -9,9 +9,11 @@ import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
 import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalMapper;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
+@Configuration
 @ConditionalOnProperty(prefix = "rentals", name="impl", havingValue = "mongo", matchIfMissing = false)
 public class MongoAutoRentalsConfiguration {
     public RentalsMapper<AutoRentalDTO, AutoRentalBO> mapper() {

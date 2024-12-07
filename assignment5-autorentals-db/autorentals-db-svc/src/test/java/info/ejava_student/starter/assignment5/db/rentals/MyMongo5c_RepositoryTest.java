@@ -25,6 +25,6 @@ import org.springframework.test.context.ActiveProfiles;
         DataSourceAutoConfiguration.class
 })
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@Disabled
+//@Disabled
 public class MyMongo5c_RepositoryTest extends Mongo5c_RepositoryTest {
 }

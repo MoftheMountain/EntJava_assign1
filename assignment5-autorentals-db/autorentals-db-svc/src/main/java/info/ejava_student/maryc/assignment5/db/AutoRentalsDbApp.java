@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -26,7 +27,7 @@ import org.springframework.security.web.SecurityFilterChain;
             SecureAutoRentalsConfiguration.class, //add autorentals programmatic security checks
 })
 @EnableJpaRepositories
-//@EntityScan(basePackageClasses={AutoRentalBO.class})
+@EnableMongoRepositories
 public class AutoRentalsDbApp {
     public static void main(String...args) {
         SpringApplication.run(AutoRentalsDbApp.class, args);

@@ -21,6 +21,6 @@ import org.springframework.test.context.ActiveProfiles;
 @EnableAutoConfiguration(exclude = {
         DataSourceAutoConfiguration.class
 })
-@Disabled
+//@Disabled
 public class MyMongo5a_ClientTest extends Mongo5a_ClientTest {
 }

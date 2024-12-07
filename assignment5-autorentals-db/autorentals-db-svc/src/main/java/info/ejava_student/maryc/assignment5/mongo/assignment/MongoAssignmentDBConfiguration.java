@@ -7,8 +7,13 @@ import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
 import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalMapper;
 import info.ejava_student.maryc.assignment5.mongo.autorentals.MongoAutoRentalsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import java.beans.BeanProperty;
 
 /**
  * This configuration class is used by the "assignment" exercises. It instantiates
@@ -17,15 +22,20 @@ import org.springframework.data.mongodb.core.MongoOperations;
  * during the end-to-end tests and the running application.
  */
 @Profile("assignment-tests")
+@Configuration
+@EnableMongoRepositories(basePackageClasses = MongoAutoRentalsRepository.class)
 public class MongoAssignmentDBConfiguration {
+
+    @Bean
     public RentalsMapper<AutoRentalDTO, AutoRentalBO> mapper() {
         return new AutoRentalMapper();
     }
 
+    @Bean
     public MongoAssignmentService<AutoRentalDTO,AutoRentalBO> mongoAssignmentService(RentalsMapper<AutoRentalDTO, AutoRentalBO> mapper,
                                                          MongoOperations mongoOps,
                                                          //make required when available/used
                                                          @Autowired(required = false) MongoAutoRentalsRepository repo) {
-        return new MongoAssignmentServiceImpl(/*mapper, mongoOps, repo*/);
+        return new MongoAssignmentServiceImpl(mapper, mongoOps, repo);
     }
 }

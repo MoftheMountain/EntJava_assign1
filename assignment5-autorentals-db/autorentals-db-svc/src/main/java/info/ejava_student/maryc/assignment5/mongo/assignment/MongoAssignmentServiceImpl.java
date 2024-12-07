@@ -1,16 +1,31 @@
 package info.ejava_student.maryc.assignment5.mongo.assignment;
 
 import info.ejava.assignments.db.autorenters.rentals.MongoAssignmentService;
+import info.ejava.assignments.db.autorenters.svc.rentals.RentalsMapper;
 import info.ejava_student.maryc.assignment2.api.autorentals.client.AutoRentalDTO;
 import info.ejava_student.maryc.assignment5.db.autorentals.AutoRentalBO;
+import info.ejava_student.maryc.assignment5.mongo.autorentals.MongoAutoRentalsRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.time.LocalDate;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class MongoAssignmentServiceImpl implements MongoAssignmentService<AutoRentalDTO, AutoRentalBO> {
+
+    private RentalsMapper<AutoRentalDTO,AutoRentalBO> mapper;
+    private MongoOperations mongoOps;
+    private MongoAutoRentalsRepository repo;
+
     /**
      * Map the DTO to a BO and persist.
      * @param rentalDTO
@@ -18,7 +33,9 @@ public class MongoAssignmentServiceImpl implements MongoAssignmentService<AutoRe
      */
     @Override
     public AutoRentalDTO mapAndPersist(AutoRentalDTO rentalDTO) {
-        return null;
+        AutoRentalBO rentalBO = mapper.map(rentalDTO);
+        mongoOps.save(rentalBO);
+        return mapper.map(rentalBO);
     }
 
     /**
@@ -29,7 +46,13 @@ public class MongoAssignmentServiceImpl implements MongoAssignmentService<AutoRe
      */
     @Override
     public List<AutoRentalDTO> queryByRentalDateRange(LocalDate startInclusive, LocalDate endInclusive) {
-        return List.of();
+        Query filter =Query.query(new Criteria().andOperator(
+                Criteria.where("StartDate").gte(startInclusive),
+                Criteria.where("endDate").lte(endInclusive)
+        ));
+
+        return mongoOps.find(filter,AutoRentalBO.class).stream()
+                .map(bo->mapper.map(bo)).toList();
     }
 
     /**
@@ -40,7 +63,7 @@ public class MongoAssignmentServiceImpl implements MongoAssignmentService<AutoRe
      */
     @Override
     public Page<AutoRentalBO> findByAutoIdByDerivedQuery(String autoId, Pageable pageable) {
-        return null;
+        return repo.findByAutoId(autoId,pageable);
     }
 
     /**
@@ -51,7 +74,7 @@ public class MongoAssignmentServiceImpl implements MongoAssignmentService<AutoRe
      */
     @Override
     public Page<AutoRentalBO> findByExample(AutoRentalBO probe, Pageable pageable) {
-        return null;
+        return repo.findAll(Example.of(probe),pageable);
     }
 
     /**
@@ -63,6 +86,6 @@ public class MongoAssignmentServiceImpl implements MongoAssignmentService<AutoRe
      */
     @Override
     public Slice<AutoRentalBO> findByDateRangeByAnnotatedQuery(LocalDate startDate, LocalDate endDate, Pageable pageable) {
-        return null;
+        return repo.byDateRange(startDate,endDate,pageable);
     }
 }

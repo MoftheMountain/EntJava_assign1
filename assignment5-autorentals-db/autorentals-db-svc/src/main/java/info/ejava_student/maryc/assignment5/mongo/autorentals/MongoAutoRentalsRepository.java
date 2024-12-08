@@ -14,4 +14,5 @@ public interface MongoAutoRentalsRepository extends MongoRepository<AutoRentalBO
     Slice<AutoRentalBO> byDateRange(LocalDate startDate, LocalDate endDate, Pageable pageable);
 
     Page<AutoRentalBO> findByAutoId(String autoId, Pageable pageable);
+
 }

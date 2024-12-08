@@ -6,6 +6,7 @@ import info.ejava_student.maryc.assignment3.assignment3.security.config.Security
 import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsConfiguration;
 import info.ejava_student.maryc.assignment5.jpa.autorentals.JpaAutoRentalsRepository;
 import info.ejava_student.maryc.assignment5.mongo.autorentals.MongoAutoRentalsConfiguration;
+import info.ejava_student.maryc.assignment5.mongo.autorentals.MongoAutoRentalsRepository;
 import info.ejava_student.maryc.assignment5.pageable.PageableConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -26,15 +27,14 @@ import org.springframework.security.web.SecurityFilterChain;
             SecurityConfiguration.class, //SecurityFilterChain supporting authorities and authorization
             SecureAutoRentalsConfiguration.class, //add autorentals programmatic security checks
 })
-@EnableJpaRepositories
-@EnableMongoRepositories
+
 public class AutoRentalsDbApp {
     public static void main(String...args) {
         SpringApplication.run(AutoRentalsDbApp.class, args);
     }
 
     @Autowired
-    private JpaAutoRentalsRepository rentalsRepository;
+    private MongoAutoRentalsRepository rentalsRepository;
 
     @Bean
     @Order(50)

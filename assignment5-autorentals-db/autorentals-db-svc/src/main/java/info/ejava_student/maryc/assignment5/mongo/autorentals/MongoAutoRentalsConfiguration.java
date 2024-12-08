@@ -12,10 +12,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
+@EnableMongoRepositories(basePackageClasses = MongoAutoRentalsRepository.class)
 @ConditionalOnProperty(prefix = "rentals", name="impl", havingValue = "mongo", matchIfMissing = false)
 public class MongoAutoRentalsConfiguration {
+
+    @Bean
     public RentalsMapper<AutoRentalDTO, AutoRentalBO> mapper() {
         return new AutoRentalMapper();
     }
@@ -26,7 +30,7 @@ public class MongoAutoRentalsConfiguration {
                                                       AutosService autosService,
                                                       RentersService rentersService,
                                                       RentalsMapper mapper) {
-        //return new MongoAutoRentalsServiceImpl(repository, autosService, rentersService, mapper);
-        return null;
+        return new MongoAutoRentalsServiceImpl(repository, autosService, rentersService, mapper);
+        //return null;
     }
 }
